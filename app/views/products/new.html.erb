@@ -13,6 +13,13 @@
         <%= f.label :pickup_times, "受取り時間" %>
         <%= f.text_field :pickup_times, class: "form-control" %>
       </div>
+      <div class="form-group col-md-6">
+        <%= f.label :price, "価格" %>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.file_field :image %>
+      </div>
       <div class="col-md-12">
         <%= f.submit "出品する", class: "btn btn-outline-info" %>
       </div>

@@ -3,6 +3,8 @@
     <div class="container">
       <div class="row productBox">
         <div class="imageBox">
+          <%= @product.image_file_name %>
+          <%= image_tag @product.image_file_name %>
         </div>
         <div class="nameBox">
           <%= @product.name %>
