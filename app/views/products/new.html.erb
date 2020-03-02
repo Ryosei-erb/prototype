@@ -1,33 +1,8 @@
 <div class="main-wrapper">
-  <div class="add-listing">
-    <%= form_with(model: @product, url: products_path, method: :post, local: true) do |f| %>
-      <div class="form-group col-md-6">
-        <%= f.label :name, "商品名" %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.label :description, "説明" %>
-        <%= f.text_area :description, class: "form-control" %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.label :pickup_times, "受取り時間" %>
-        <%= f.text_field :pickup_times, class: "form-control" %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.label :price, "価格" %>
-        <%= f.text_field :price, class: "form-control" %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.file_field :image %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.fields_for :taxons do |fields| %>
-          <%= fields.collection_select :name, Taxon.all, :name, :name %>
-        <% end %>
-      </div>
-      <div class="col-md-12">
-        <%= f.submit "出品する", class: "btn btn-outline-info" %>
-      </div>
-    <% end %>
+  <div class="py-3">
+    <div class="container formBox">
+      <h3 class="mb-3 row justify-content-center"><strong>追加する</strong></h3>
+        <%= render "push_product_form", product: @product %>
+    </div>
   </div>
 </div>

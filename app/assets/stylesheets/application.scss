@@ -1,17 +1,46 @@
 @import "bootstrap";
+@import "font-awesome";
 
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+  font-family: "Bitter", serif;
+  background-color: #F2F2F2;
+}
+.formBox {
+  margin-left: 120px;
+  margin-right: 120px;
+  padding: 10px 0px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 15px 30px 20px 0px #9da2b7;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.label {
+  cursor: pointer;
+  i {
+    font-size: 100px;
+    width: 600px;
+    text-align: center;
+    color: black;
+  }
+}
+.image_file {
+  display: none;
+}
+.create-button {
+  background-color: #00b7ce;
+  color: #ffffff;
+  font-size: 20px;
+  width: 600px;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 50px;
+  border-radius: 5px;
+  border: 3px solid #00b7ce;
+}
+.create-button:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #00b7ce;
+}

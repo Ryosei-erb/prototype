@@ -1,0 +1,29 @@
+<div class="row justify-content-center">
+  <%= form_with(model: product, url: products_path, method: :post, local: true) do |f| %>
+  <div class="form-group col">
+    <strong><%= f.label :name, "名称" %></strong>
+    <%= f.text_field :name, class: "form-control form-control-lg" %>
+  </div>
+  <div class="form-group col-auto">
+    <strong><%= f.label :description, "説明" %></strong>
+    <%= f.text_area :description, class: "form-control form-control-lg", size: "50×200", placeholder: "品質や分量、経緯など" %>
+  </div>
+  <div class="form-group col-auto">
+    <strong><%= f.label :pickup_times, "受取り時間" %></strong>
+    <%= f.text_field :pickup_times, class: "form-control form-control-lg", placeholder: "PM 19:00前後に" %>
+  </div>
+  <div class="form-group col-auto">
+    <strong><%= f.label :price, "価格" %></strong>
+    <%= f.text_field :price, class: "form-control form-control-lg", placeholder: "700円" %>
+  </div>
+  <div class="form-group col-auto">
+    <%= f.label :image, class: "label" do %>
+      <%= fa_icon "camera border" %>
+      <%= f.file_field :image, class: "image_file" %>
+    <% end %>
+  </div>
+  <div class="form-group col-auto">
+    <%= f.submit "出品する", class: "create-button" %>
+  </div>
+  <% end %>
+</div>

@@ -57,3 +57,5 @@ gem "bootstrap"
 gem "paperclip"
 gem "awesome_nested_set"
 gem "pry-byebug"
+gem 'font-awesome-rails'
+gem "jquery-rails"
