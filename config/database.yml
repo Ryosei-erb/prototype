@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: prototype_production
-  username: prototype
-  password: <%= ENV['PROTOTYPE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['JAWSDB_URL']&.sub('mysql://', 'mysql2://')
+  # database: prototype_production
+  # username: prototype
+  # password: <%= ENV['PROTOTYPE_DATABASE_PASSWORD'] %>
