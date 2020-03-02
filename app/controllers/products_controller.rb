@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.taxons.build
   end
 
   def create
@@ -17,6 +18,6 @@ class ProductsController < ApplicationController
   end
 
   def products_params
-    params.require(:product).permit(:name, :description, :pickup_times, :image)
+    params.require(:product).permit(:name, :description, :pickup_times, :image, taxons_attributes: [:id, :name])
   end
 end

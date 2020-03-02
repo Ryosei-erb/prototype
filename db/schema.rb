@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_01_124401) do
+ActiveRecord::Schema.define(version: 2020_03_02_025314) do
+
+  create_table "product_taxons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "taxon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -24,6 +31,18 @@ ActiveRecord::Schema.define(version: 2020_03_01_124401) do
     t.bigint "image_file_size"
     t.datetime "image_updated_at"
     t.string "price"
+  end
+
+  create_table "taxons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "parent_id"
+    t.integer "lft"
+    t.integer "rgt"
+    t.string "name"
+    t.index ["lft"], name: "index_taxons_on_lft"
+    t.index ["parent_id"], name: "index_taxons_on_parent_id"
+    t.index ["rgt"], name: "index_taxons_on_rgt"
   end
 
 end

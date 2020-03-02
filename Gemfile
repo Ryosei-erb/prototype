@@ -55,3 +55,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "bootstrap"
 gem "paperclip"
+gem "awesome_nested_set"
+gem "pry-byebug"

@@ -1,0 +1,2 @@
+module ProductTaxonsHelper
+end

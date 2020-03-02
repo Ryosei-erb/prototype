@@ -20,6 +20,11 @@
       <div class="form-group col-md-6">
         <%= f.file_field :image %>
       </div>
+      <div class="form-group col-md-6">
+        <%= f.fields_for :taxons do |fields| %>
+          <%= fields.collection_select :name, Taxon.all, :name, :name %>
+        <% end %>
+      </div>
       <div class="col-md-12">
         <%= f.submit "出品する", class: "btn btn-outline-info" %>
       </div>
