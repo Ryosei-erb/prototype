@@ -2,18 +2,21 @@
   <section class="main-content">
     <div class="container">
       <div class="row productBox">
-        <div class="imageBox">
-          <%= @product.image_file_name %>
-          <%= image_tag @product.image_file_name %>
+        <div class="col-md-6">
+          <div class="imageBox">
+            <%= image_tag @product.image.url(:large) %>
+          </div>
         </div>
-        <div class="nameBox">
-          <%= @product.name %>
-        </div>
-        <div class="descriptionBox">
-          <%= @product.description %>
-        </div>
-        <div class="pickup_timesBox">
-          <%= @product.pickup_times %>
+        <div class="col-md-6">
+          <div class="nameBox">
+            <%= @product.name %>
+          </div>
+          <div class="descriptionBox">
+            <%= @product.description %>
+          </div>
+          <div class="pickup_timesBox">
+            <%= @product.pickup_times %>
+          </div>
         </div>
       </div>
       <div class="row shopBox">
