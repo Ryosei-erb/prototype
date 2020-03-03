@@ -3,9 +3,6 @@
 
 body {
   font-family: "Bitter", serif;
-
-}
-.new-product-form {
   background-color: #F2F2F2;
 }
 .formBox {
@@ -47,7 +44,23 @@ body {
   background-color: #ffffff;
   color: #00b7ce;
 }
+.productBox {
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 15px 30px 20px 0px #9da2b7;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
 .imageBox {
-  width: 100%;
-  padding: 0 0 30px 0;
+  padding: 50px 50px 50px 50px;
+}
+.single-nameBox {
+  padding-top: 80px;
+}
+.descriptionBox {
+  color: #C0C0C0;
+  padding-top: 30px;
+}
+.pickup_timesBox {
+  padding-top: 30px;
 }
