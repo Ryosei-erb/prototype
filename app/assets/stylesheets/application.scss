@@ -56,11 +56,26 @@ body {
 }
 .single-nameBox {
   padding-top: 80px;
+  border-bottom: solid 1px #D3D3D3;
+}
+.single-priceBox {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px #D3D3D3;
+  color: #EB3228;
+}
+.single-priceBox h5 {
+  color: #C0C0C0;
 }
 .descriptionBox {
-  color: #C0C0C0;
   padding-top: 30px;
+  border-bottom: solid 1px #D3D3D3;
 }
 .pickup_timesBox {
   padding-top: 30px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #D3D3D3;
+}
+.pickup_timesBox h5 {
+  color: #C0C0C0;
 }
