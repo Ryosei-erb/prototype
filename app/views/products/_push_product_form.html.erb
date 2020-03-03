@@ -17,9 +17,10 @@
     <%= f.text_field :price, class: "form-control form-control-lg", placeholder: "700円" %>
   </div>
   <div class="form-group col-auto">
-    <%= f.label :image, class: "label" %>
+    <%= f.label :image, class: "label" do %>
       <%= fa_icon "camera border" %>
       <%= f.file_field :image, class: "image_file" %>
+    <% end %>
   </div>
   <div class="form-group col-auto">
     <%= f.submit "出品する", class: "create-button" %>
