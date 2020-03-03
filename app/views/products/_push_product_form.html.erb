@@ -22,6 +22,9 @@
       <%= f.file_field :image, class: "image_file", accept: "image/jpeg, image/peg, image/gif, image/png" %>
     <% end %>
   </div>
+  <div class="form-group col-auto taxon-select">
+    <%= f.select :taxon_ids, nested_set_options(Taxon) { |i| "#{"-" * i.level} #{i.name}"} %>
+  </div>
   <div class="form-group col-auto">
     <%= f.submit "出品する", class: "create-button" %>
   </div>

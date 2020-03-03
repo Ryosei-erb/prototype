@@ -62,10 +62,16 @@ body {
   padding-top: 20px;
   padding-bottom: 10px;
   border-bottom: solid 1px #D3D3D3;
-  color: #EB3228;
 }
-.single-priceBox h5 {
-  color: #C0C0C0;
+.single-priceBox-sub-first {
+  display: inline-block;
+  color: #808080;
+}
+.single-priceBox-sub-second {
+  display: inline-block;
+  font-size: 20px;
+  // color: #EB3228;
+  padding-left: 10px;
 }
 .descriptionBox {
   padding-top: 30px;
@@ -76,6 +82,50 @@ body {
   padding-bottom: 20px;
   border-bottom: solid 1px #D3D3D3;
 }
-.pickup_timesBox h5 {
-  color: #C0C0C0;
+.pickup_timesBox-sub-first {
+  display: inline-block;
+  color: #808080;
+}
+.pickup_timesBox-sub-second {
+  display: inline-block;
+  padding-left: 10px;
+}
+.taxon-select {
+  overflow: hidden;
+	width: 90%;
+	margin: 2em auto;
+	text-align: center;
+  position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
+}
+.taxon-select select {
+  width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+	border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+  padding: 8px 38px 8px 8px;
+	color: #666666;
+}
+.taxon-select::before {
+  position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
 }
