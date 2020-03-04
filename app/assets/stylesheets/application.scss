@@ -3,6 +3,9 @@
 
 body {
   font-family: "Bitter", serif;
+
+}
+.main-wrapper {
   background-color: #F2F2F2;
 }
 .formBox {
@@ -182,4 +185,12 @@ body {
 .remember-check-label {
   display: inline-block;
   padding-left: 6px;
+}
+.navbar {
+  border-bottom: solid 3px #00b7ce;
+}
+.icon-header {
+  font-size: 31px;
+  padding-left: 6px;
+  color: #00b7ce;
 }
