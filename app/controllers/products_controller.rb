@@ -17,6 +17,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def checkout
+    @product = Product.find(params[:id])
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(currency: "jpy", amount: @product.price, card: params["payjp-token"] )
+    redirect_to root_path, notice: "Checkout complete"
+  end
+
   def products_params
     params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids)
   end
