@@ -55,7 +55,7 @@ body {
   padding: 50px 50px 50px 50px;
 }
 .single-nameBox {
-  padding-top: 80px;
+  padding-top: 41px;
   border-bottom: solid 1px #D3D3D3;
 }
 .single-priceBox {
@@ -128,4 +128,42 @@ body {
 	border-right: 6px solid transparent;
 	border-top: 6px solid #666666;
 	pointer-events: none;
+}
+.product-space {
+  padding-top: 21px;
+  text-decoration: none;
+}
+.product-space a {
+  text-decoration: none;
+}
+.product-name-price-space {
+  background-color: #ffffff;
+}
+.product-name-space {
+  padding-top: 3px;
+  font-size: 16px;
+  color: black;
+}
+.product-price-space {
+  color: #ababab;
+  font-weight: bold;
+  padding-bottom: 3px;
+  font-size: 24px;
+}
+.product-space img {
+  width: 100%;
+}
+.back-to-the-index {
+  padding-top: 61px;
+}
+.back-to-the-index a {
+  text-decoration: none;
+}
+.back-to-the-index p {
+  display: inline-block;
+  color: #C0C0C0;
+}
+.icon-reply {
+  display: inline-block;
+  color: #C0C0C0;
 }
