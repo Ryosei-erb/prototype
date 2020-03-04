@@ -52,7 +52,7 @@ body {
   border-bottom: solid 2px black;
 }
 .imageBox {
-  padding: 50px 50px 50px 50px;
+  padding: 50px 50px 50px 30px;
 }
 .single-nameBox {
   padding-top: 41px;
@@ -131,20 +131,24 @@ body {
 }
 .product-space {
   padding-top: 21px;
-  text-decoration: none;
 }
 .product-space a {
   text-decoration: none;
 }
 .product-name-price-space {
   background-color: #ffffff;
+  border-left: solid 3px #ababab;
+  border-right: solid 3px #ababab;
+  border-bottom: solid 3px #ababab;
 }
 .product-name-space {
   padding-top: 3px;
+  padding-left: 7px;
   font-size: 16px;
   color: black;
 }
 .product-price-space {
+  padding-left: 7px;
   color: #ababab;
   font-weight: bold;
   padding-bottom: 3px;
@@ -152,6 +156,10 @@ body {
 }
 .product-space img {
   width: 100%;
+  border-left: solid 3px #ababab;
+  border-right: solid 3px #ababab;
+  border-top: solid 3px #ababab;
+
 }
 .back-to-the-index {
   padding-top: 61px;
@@ -167,7 +175,11 @@ body {
   display: inline-block;
   color: #C0C0C0;
 }
-#payjp_checkout_box {
-  padding-top: 30px;
-  padding-left: 30px;
+// #payjp_checkout_box {
+//   padding-top: 30px;
+//   padding-left: 30px;
+// }
+.remember-check-label {
+  display: inline-block;
+  padding-left: 6px;
 }

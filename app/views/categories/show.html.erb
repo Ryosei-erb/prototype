@@ -4,13 +4,13 @@
       <% @products.each do |product| %>
         <div class="col-md-3 product-space">
           <%= link_to product_path(product.id) do %>
-          <div class="image-space">
-            <%= image_tag product.image.url(:product) %>
-          </div>
-          <div class="product-name-price-space">
-            <div class="product-name-space"><%= product.name %></div>
-            <div class="product-price-space"><%= product.price %></div>
-          </div>
+            <div class="image-space">
+              <%= image_tag product.image.url(:product) %>
+            </div>
+            <div class="product-name-price-space">
+              <div class="product-name-space"><%= product.name %></div>
+              <div class="product-price-space">¥<%= product.price %></div>
+            </div>
           <% end %>
         </div>
       <% end %>

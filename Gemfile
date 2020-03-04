@@ -60,6 +60,6 @@ gem 'font-awesome-rails'
 gem "jquery-rails"
 gem "carrierwave"
 gem "mini_magick"
-gem "fog"
 gem "payjp"
 gem "dotenv-rails"
+gem 'sorcery', '0.14.0'

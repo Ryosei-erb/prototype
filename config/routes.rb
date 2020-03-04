@@ -6,4 +6,9 @@ Rails.application.routes.draw do
     end
   end
   resources :categories, only: [:show]
+  resources :users, only: [:create]
+  get "/signup", to: "users#new"
+  get "/login", to: "sessions#new", as: "new_login"
+  post "/login", to: "sessions#create", as: "create_login"
+  delete "/logout", to: "sessions#destroy", as: "logout"
 end

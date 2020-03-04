@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_024751) do
+ActiveRecord::Schema.define(version: 2020_03_04_090052) do
 
   create_table "product_taxons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "product_id"
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 2020_03_04_024751) do
     t.index ["lft"], name: "index_taxons_on_lft"
     t.index ["parent_id"], name: "index_taxons_on_parent_id"
     t.index ["rgt"], name: "index_taxons_on_rgt"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
 end

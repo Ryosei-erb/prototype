@@ -4,7 +4,7 @@
       <div class="row productBox">
         <div class="col-md-6">
           <div class="imageBox">
-            <%= image_tag @product.image.url(:large) %>
+            <div class="inside-imageBox"><%= image_tag @product.image.url(:large) %></div>
           </div>
         </div>
         <div class="col-md-6">
@@ -29,10 +29,10 @@
             <div class="pickup_timesBox-sub-second"><%= @product.pickup_times %></div>
           </div>
           <div class="row shopBox">
-            <%= form_with(url: checkout_products_path(@product.id), method: :post, local: true) do %>
+            <!-- <%= form_with(url: checkout_products_path(@product.id), method: :post, local: true) do %>
               <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button"
               data-key="<%= ENV["PAYJP_PUBRIC_KEY"] %>", data-text="購入する"></script>
-            <% end %>
+            <% end %> -->
           </div>
         </div>
       </div>
