@@ -3,7 +3,6 @@
 
 body {
   font-family: "Bitter", serif;
-
 }
 .main-wrapper {
   background-color: #F2F2F2;
@@ -52,7 +51,6 @@ body {
   background-color: #ffffff;
   box-shadow: 15px 30px 20px 0px #9da2b7;
   border-right: solid 2px black;
-  border-bottom: solid 2px black;
 }
 .imageBox {
   padding: 50px 50px 50px 30px;
@@ -193,4 +191,22 @@ body {
   font-size: 31px;
   padding-left: 6px;
   color: #00b7ce;
+}
+.relating-products {
+  background-color: white;
+  padding: 10px 0;
+  border-bottom-right-radius: 8px;
+  box-shadow: 15px 30px 20px 0px #9da2b7;
+  border-right: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.relating-products-tab {
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 15px 30px 20px 0px #9da2b7;
+  border-right: solid 2px black;
+  padding-left: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: solid 6px #C0C0C0;
 }

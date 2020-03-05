@@ -8,37 +8,17 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="back-to-the-index">
-            <%= link_to category_path(@product.taxons.first.id) do %>
-            <div class="icon-reply"><%= fa_icon "reply" %></div>
-            <p>一覧ページへ戻る</p>
-            <% end %>
-          </div>
-          <div class="single-nameBox">
-            <h2><%= @product.name %></h2>
-          </div>
-          <div class="single-priceBox">
-            <div class="single-priceBox-sub-first">価格:</div>
-            <div class="single-priceBox-sub-second">¥<%= @product.price %></div>
-          </div>
-          <div class="descriptionBox">
-            <p><%= @product.description %></p>
-          </div>
-          <div class="pickup_timesBox">
-            <div class="pickup_timesBox-sub-first">希望受け取り日時:</div>
-            <div class="pickup_timesBox-sub-second"><%= @product.pickup_times %></div>
-          </div>
-          <div class="row shopBox">
-            <!-- <%= form_with(url: checkout_products_path(@product.id), method: :post, local: true) do %>
-              <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button"
-              data-key="<%= ENV["PAYJP_PUBRIC_KEY"] %>", data-text="購入する"></script>
-            <% end %> -->
-          </div>
+          <%= render "product_right_side", product: @product %>
         </div>
       </div>
     </div>
-    <div class="row related-products">
+    <div class="container">
+      <div class="row relating-products-tab">関連商品</div>
+      <div class="row relating-products">
+        <% @relating_products.each do |product| %>
+          <%= render "shared/product_segment", product: product %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </div>

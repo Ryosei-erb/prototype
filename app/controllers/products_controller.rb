@@ -2,6 +2,8 @@ class ProductsController < ApplicationController
   skip_before_action :require_login, only: [:show]
   def show
     @product = Product.find(params[:id])
+    @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
+      @product.taxon_ids).where.not("id": @product.id).distinct.shuffle.take(4)
   end
 
   def new
