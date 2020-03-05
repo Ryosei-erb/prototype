@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :require_login
+  def show
+    @user = User.find(params[:id])
+    @favorites_products = @user.favorites.map { |f| f.product }
+  end
+  
   def new
     @user = User.new
   end

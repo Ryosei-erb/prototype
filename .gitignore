@@ -28,3 +28,8 @@
 
 *.env
 /public/uploads
+/app/assets/javascripts/
+app/assets/stylesheets/favorites.scss
+app/assets/stylesheets/home.scss
+app/helpers/favorites_helper.rb
+app/helpers/home_helper.rb

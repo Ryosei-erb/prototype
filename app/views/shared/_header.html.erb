@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-md sticky-top navbar-light" style="background-color: white;" >
-  <div class="icon-header"><%= fa_icon "fort-awesome" %></div>
+  <div class="icon-header">
+    <%= link_to root_path, style: "color: #00b7ce;" do %>
+      <%= icon "fab", "fort-awesome" %>
+    <% end %>
+  </div>
   <div class="header-search-box">
     <form class="form-inline" action="/products/search" method="get" accept-charset="UTF-8" %>
       <input type="text" name="search" class="form-control mr-sm-2" placeholder="Search..">
@@ -8,4 +12,10 @@
       </button>
     </form>
   </div>
+  <% if current_user %>
+    <div class="logout-link">
+      <%= link_to "ログアウト", logout_path, method: :delete, style: "color: #00b7ce;" %>
+    </div>
+  <% else %>
+  <% end %>
 </nav>

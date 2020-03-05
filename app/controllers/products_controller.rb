@@ -14,7 +14,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(products_params)
+    @product.user_id = current_user.id
     if @product.save
+      binding.pry
       redirect_to product_path(@product.id)
     else
       render "new"
