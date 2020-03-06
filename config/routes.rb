@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create", as: "create_login"
   delete "/logout", to: "sessions#destroy", as: "logout"
   resources :homes, only: [:index]
+  get "/rooms/show", to: "rooms#show"
+  mount ActionCable.server => "/cable"
 end

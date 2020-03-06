@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   RELATING_PRODUCTS_LIMIT = 4
   def show
     @product = Product.find(params[:id])
+    @messages = Message.all
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
       @product.taxon_ids).where.not("id": @product.id).distinct.shuffle.take(RELATING_PRODUCTS_LIMIT)
   end
