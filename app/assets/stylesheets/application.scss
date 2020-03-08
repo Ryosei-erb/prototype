@@ -279,3 +279,63 @@ body {
   bottom: 0;
   left: 0;
 }
+.start-chat-button {
+  background-color: #00b7ce;
+  color: #ffffff;
+  font-size: 20px;
+  width: 233px;
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  line-height: 48px;
+  // border-radius: 5px;
+  border: 3px solid #00b7ce;
+}
+.start-chat-button:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #00b7ce;
+}
+
+.restart-chat-button {
+  background-color: #00b7ce;
+  color: #ffffff;
+  font-size: 20px;
+  width: 233px;
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  line-height: 48px;
+  border: 3px solid #00b7ce;
+}
+.restart-chat-button:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #00b7ce;
+}
+.chat-user-name {
+  text-align: center;
+  font-size: 22px;
+}
+.chat-user-name-tag {
+  display: inline-block;
+}
+.chat-user-name-content {
+  display: inline-block;
+}
+.chat-product-name {
+  text-align: center;
+  font-size: 18px;
+  padding-top: 3px;
+}
+.chat-product-name-tag {
+  display: inline-block;
+}
+.chat-product-name-content {
+  display: inline-block;
+}
+.chat-message {
+  text-align: center;
+  border: solid;
+  padding-bottom: 3px;
+}

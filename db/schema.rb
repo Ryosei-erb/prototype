@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_230236) do
+ActiveRecord::Schema.define(version: 2020_03_08_054959) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
@@ -19,10 +19,23 @@ ActiveRecord::Schema.define(version: 2020_03_05_230236) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "memberships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_memberships_on_room_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "product_taxons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -42,6 +55,13 @@ ActiveRecord::Schema.define(version: 2020_03_05_230236) do
     t.integer "price"
     t.string "image"
     t.integer "user_id"
+  end
+
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id"
   end
 
   create_table "taxons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,4 +89,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_230236) do
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
+  add_foreign_key "memberships", "rooms"
+  add_foreign_key "memberships", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
 end

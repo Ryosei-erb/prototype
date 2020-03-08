@@ -3,9 +3,20 @@ class ProductsController < ApplicationController
   RELATING_PRODUCTS_LIMIT = 4
   def show
     @product = Product.find(params[:id])
-    @messages = Message.all
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
       @product.taxon_ids).where.not("id": @product.id).distinct.shuffle.take(RELATING_PRODUCTS_LIMIT)
+    @user = @product.user
+    @current_user_memberships = Membership.where(user_id: current_user.id)
+
+    @current_user_memberships.each do |current_user_membership|
+      if current_user_membership.room.product_id == @product.id
+        @has_room = true
+        @room_id = current_user_membership.room_id
+      else
+        @room = Room.new
+        @membership = Membership.new
+      end
+    end
   end
 
   def new
@@ -17,7 +28,6 @@ class ProductsController < ApplicationController
     @product = Product.new(products_params)
     @product.user_id = current_user.id
     if @product.save
-      binding.pry
       redirect_to product_path(@product.id)
     else
       render "new"

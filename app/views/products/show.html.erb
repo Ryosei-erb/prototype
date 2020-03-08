@@ -8,23 +8,8 @@
           </div>
         </div>
         <div class="col-md-6">
-          <%= render "product_right_side", product: @product %>
+          <%= render "product_right_side", product: @product, user: @user %>
         </div>
-      </div>
-    </div>
-    <div class="container">
-      <h2>Chat room</h2>
-      <form class="form-inline">
-        <div class="form-group">
-          <input type="text" class="form-control" id="chat-input" />
-        </div>
-        <button id="button" class="btn btn-primary">送信</button>
-      </form>
-
-      <div id="messages">
-        <ul class="list-group">
-          <%= render @messages %>
-        </ul>
       </div>
     </div>
     <div class="container">

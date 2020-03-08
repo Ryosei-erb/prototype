@@ -43,6 +43,21 @@
         <div class="like-count"><%= product.favorites.count %></div>
     <% end %>
   </div>
+  <div class="chatBox">
+      <% if @has_room %>
+        <div class="already-has-chatting">
+          <%= button_to "チャットを再開する", room_path(@room_id), method: :get, class: "restart-chat-button" %>
+        </div>
+      <% else %>
+        <div class="start-chat">
+          <%= form_with url: rooms_path, method: :post, local: true do |f| %>
+            <%= hidden_field_tag :product_id, product.id %>
+            <%= hidden_field_tag :user_id, user.id %>
+            <%= f.submit "チャットを始める", class: "start-chat-button" %>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
   <div class="row shopBox">
     <!-- <%= form_with(url: checkout_products_path(@product.id), method: :post, local: true) do %>
       <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button"

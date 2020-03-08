@@ -1,15 +1,35 @@
-<div class="container">
-  <h2>Chat room</h2>
-  <form class="form-inline">
-    <div class="form-group">
-      <input type="text" class="form-control" id="chat-input" />
+<div class="chat-room-title">
+  <div class="chat-user-name">
+    <div class="chat-user-name-tag">To:</div>
+    <div class="chat-user-name-content">
+      <%= @room.product.user.name %>
     </div>
-    <button id="button" class="btn btn-primary">送信</button>
-  </form>
-
-  <div id="messages">
-    <ul class="list-group">
-      <%= render @messages %>
-    </ul>
+  </div>
+  <div class="chat-product-name">
+    <div class="chat-product-name-tag">About:</div>
+    <div class="chat-product-name-content">
+      <%= @room.product.name %>
+    </div>
   </div>
 </div>
+<hr>
+<div class="message-area ">
+  <% if @messages.present? %>
+    <% @messages.each do |message| %>
+      <div class=" current-user-face-icon">
+
+      </div>
+      <div class="chat-message">
+        <%= message.content %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%= form_with model: @message, url: messages_path, method: :post, local: true do |f| %>
+  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <br>
+  <%= f.submit "投稿する" %>
+<% end %>

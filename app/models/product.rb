@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   has_many :product_taxons, dependent: :destroy
   has_many :taxons, through: :product_taxons
   belongs_to :user
+  has_one :room
   has_many :favorites
   mount_uploader :image, ImageUploader
   accepts_nested_attributes_for :taxons
