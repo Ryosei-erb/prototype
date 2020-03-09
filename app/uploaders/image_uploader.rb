@@ -7,6 +7,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :large do
     process resize_to_limit: [500, 500]
   end
+  version :small do
+    process resize_to_limit: [48, 48]
+  end
 
   if Rails.env.production?
     storage :fog

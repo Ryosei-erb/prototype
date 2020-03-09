@@ -334,8 +334,60 @@ body {
 .chat-product-name-content {
   display: inline-block;
 }
-.chat-message {
+
+.balloon-left {
+  padding: 10px 15px;
+  border: solid 1px #bbbbbb;
+  margin: 0 70px;
+  border-radius: 0 20px 20px 20px / 0 20px 20px 20px;
+  line-height: 31px;
   text-align: center;
-  border: solid;
-  padding-bottom: 3px;
+}
+.balloon-right {
+  padding: 10px 15px;
+  border: solid 1px #bbbbbb;
+  margin: 0 70px;
+  border-radius: 20px 0 20px 20px / 20px 0 20px 20px;
+  background-color: #00b7ce;
+  color: #ffffff;
+  line-height: 31px;
+  text-align: center;
+}
+.user-icon-left {
+  float: left;
+  margin-right: 10px;
+}
+.user-icon-right {
+  float: right;
+  margin-right: 0px;
+}
+.message-one {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.timestamp {
+  color: #C0C0C0;
+}
+
+.message-form {
+  height: 80px;
+  margin: 10px 0;
+  padding: 13px 70px 0 70px;
+  border-top: 1px solid #bbbbbb;
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+  .content {
+    float: left;
+    height: 66px;
+    width: 86%;
+  }
+  .btn {
+    float: left;
+    width: 14%;
+    border: solid 1px #bbbbbb;
+    height: 100% !important;
+  }
 }
