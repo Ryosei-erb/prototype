@@ -5,12 +5,11 @@ class Product < ApplicationRecord
   has_one :room
   has_many :favorites
   mount_uploader :image, ImageUploader
-  accepts_nested_attributes_for :taxons
+  
   validates :name, presence: true, length: { minimum: 2}
   validates :description, presence: true
   validates :pickup_times, presence: true
   validates :price, presence: true, numericality: { only_integer: true}
-
   validate :image_size
 
   def image_size

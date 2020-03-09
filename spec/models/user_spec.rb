@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   let(:user) { create(:user, name: "user_a", email: "user_a@user.com") }
 
   context "有効性と存在性を検証する場合" do
-    it "ユーザーネーム、メールアドレス、パスワードがあれば有効" do
+    it "ユーザーネーム、メールアドレス、パスワードが有効" do
       expect(user).to be_valid
     end
 
