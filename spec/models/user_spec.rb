@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { create(:user, name: "user_a", email: "user_a@user.com") }
+  let!(:product) { create(:product, user: user) }
+  let!(:user) { create(:user, name: "user_a", email: "user_a@user.com") }
 
   context "有効性と存在性を検証する場合" do
-    it "ユーザーネーム、メールアドレス、パスワードが有効" do
-      expect(user).to be_valid
-    end
+    it { expect(user).to be_valid }
 
     it "ユーザーネームがあれば有効" do
       user = build(:user, name: nil)
@@ -37,8 +36,10 @@ RSpec.describe User, type: :model do
 
   context "メールアドレスの書式の検証を行う場合" do
     it "正しい書式であれば有効" do
-      valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
-                           first.last@foo.jp alice+bob@baz.cn]
+      valid_addresses = %w(
+        user@example.com USER@foo.COM A_US-ER@foo.bar.org
+        first.last@foo.jp alice+bob@baz.cn
+      )
       valid_addresses.each do |valid_address|
         user.email = valid_address
         expect(user).to be_valid
@@ -46,8 +47,10 @@ RSpec.describe User, type: :model do
     end
 
     it "不正な書式であれば無効" do
-      invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
-                           foo@bar_baz.com foo@bar+baz.com]
+      invalid_addresses = %w(
+        user@example,com user_at_foo.org user.name@example.
+        foo@bar_baz.com foo@bar+baz.com
+      )
       invalid_addresses.each do |invalid_address|
         user.email = invalid_address
         user.valid?

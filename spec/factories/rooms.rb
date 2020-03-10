@@ -1,6 +1,5 @@
 FactoryBot.define do
-  factory :product_taxon do
-    taxon
+  factory :room do
     product
   end
 end

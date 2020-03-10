@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Favorite, type: :model do
-  let(:user) { create(:user)}
-  let(:product) { create(:product)}
-  let(:favorite) { Favorite.new(:user_id => user.id, :product_id => product.id)}
+  let(:user) { create(:user) }
+  let(:product) { create(:product) }
+  let(:favorite) { create(:favorite, user: user, product: product) }
 
-  it "Favoriteモデルが有効" do
-    expect(favorite).to be_valid
-  end
+  it { expect(favorite).to be_valid }
 
   it "user_idがあれば有効" do
     favorite.user_id = nil

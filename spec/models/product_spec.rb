@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  let(:product) { create(:product)}
+  let(:product) { create(:product) }
+
   context "有効性と存在性を検証する場合" do
-    it "商品内容が有効" do
-      expect(product).to be_valid
-    end
+    it { expect(product).to be_valid }
 
     it "商品名があれば有効" do
       product = build(:product, name: nil)

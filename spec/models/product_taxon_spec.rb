@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ProductTaxon, type: :model do
-  let(:taxon) { create(:taxon)}
-  let(:product) { create(:product)}
-  let(:product_taxons) { ProductTaxon.new(:product_id => product.id, :taxon_id => taxon.id)}
-  it "ProductTaxonモデルが有効" do
-    expect(product_taxons).to be_valid
-  end
+  let(:taxon) { create(:taxon) }
+  let(:product) { create(:product) }
+  let(:product_taxons) { create(:product_taxon, product: product, taxon: taxon) }
+
+  it { expect(product_taxons).to be_valid }
 
   it "product_idがあれば有効" do
     product_taxons.product_id = nil

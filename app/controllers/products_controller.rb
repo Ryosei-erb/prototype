@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
-      @product.taxon_ids).where.not("id": @product.id).distinct.shuffle.take(RELATING_PRODUCTS_LIMIT)
+      @product.taxon_ids).where.not("id": @product.id).distinct.
+      shuffle.take(RELATING_PRODUCTS_LIMIT)
     @user = @product.user
     @current_user_memberships = Membership.where(user_id: current_user.id)
 
@@ -35,7 +36,10 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @searched_products = Product.joins(:taxons).where("taxons.name like ?", "%#{params[:search]}%").or(Product.joins(:taxons).where("products.name like ?", "%#{params[:search]}%"))
+    @searched_products = Product.joins(:taxons).
+      where("taxons.name like ?", "%#{params[:search]}%").
+      or(Product.joins(:taxons).
+      where("products.name like ?", "%#{params[:search]}%"))
   end
 
   # def checkout

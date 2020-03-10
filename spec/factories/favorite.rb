@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :product_taxon do
-    taxon
+  factory :favorite do
+    user
     product
   end
 end
