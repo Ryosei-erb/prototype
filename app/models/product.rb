@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :pickup_times, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
+  validates :image, presence: true
   validate :image_size
 
   def image_size

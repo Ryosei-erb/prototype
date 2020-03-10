@@ -13,8 +13,8 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new
     @room.product_id = params[:product_id]
-    @room.memberships.build(room_id: @room.id, user_id: params[:user_id])
-    @room.memberships.build(room_id: @room.id, user_id: current_user.id)
+    @room.memberships.build(user_id: params[:user_id])
+    @room.memberships.build(user_id: current_user.id)
     @room.save
     redirect_to @room
   end

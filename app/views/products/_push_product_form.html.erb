@@ -1,6 +1,8 @@
 <div class="row justify-content-center">
   <%= form_with(model: product, url: products_path, method: :post, local: true) do |f| %>
   <div class="form-group col">
+    <%= render "shared/error_messages", product: product %>
+
     <strong><%= f.label :name, "名称" %></strong>
     <%= f.text_field :name, class: "form-control form-control-lg" %>
   </div>

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :require_login, only: [:show]
+  skip_before_action :require_login, only: [:show, :search]
   RELATING_PRODUCTS_LIMIT = 4
   def show
     @product = Product.find(params[:id])
@@ -7,15 +7,16 @@ class ProductsController < ApplicationController
       @product.taxon_ids).where.not("id": @product.id).distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
     @user = @product.user
-    @current_user_memberships = Membership.where(user_id: current_user.id)
-
-    @current_user_memberships.each do |current_user_membership|
-      if current_user_membership.room.product_id == @product.id
-        @has_room = true
-        @room_id = current_user_membership.room_id
-      else
-        @room = Room.new
-        @membership = Membership.new
+    if current_user
+      @current_user_memberships = Membership.where(user_id: current_user.id)
+      @current_user_memberships.each do |current_user_membership|
+        if current_user_membership.room.product_id == @product.id
+          @has_room = true
+          @room_id = current_user_membership.room_id
+        else
+          @room = Room.new
+          @membership = Membership.new
+        end
       end
     end
   end

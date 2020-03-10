@@ -5,9 +5,6 @@ FactoryBot.define do
     salt { "salt" }
     crypted_password { "crypted" }
     password { "password" }
-    image { "image" }
-    # after(:product) do |user|
-    #   build(:product, user: user)
-    # end
+    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/53ma03.jpg')) }
   end
 end
