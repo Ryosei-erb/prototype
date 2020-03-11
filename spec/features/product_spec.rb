@@ -37,8 +37,13 @@ RSpec.feature "Products", type: :feature do
         expect(page).to have_link, href: product_path(another_product[0].id)
       end
     end
+  end
 
+  describe "Header表示" do
     describe "検索機能" do
+      before do
+        visit root_path
+      end
       context "「bakery」と検索した場合" do
         before do
           fill_in "search", with: "bakery"
@@ -67,16 +72,5 @@ RSpec.feature "Products", type: :feature do
         end
       end
     end
-
-    # it "トップページへ遷移する" do
-    #   page.first(".icon-header").click
-    #   expect(current_path).to eq root_path
-    # end
-
-    # context "他のユーザーでログインした場合" do
-    #   # it "お気に入りが表示される" do
-    #   #
-    #   # end
-    # end
   end
 end

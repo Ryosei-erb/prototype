@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let!(:product) { create(:product, user: user) }
-  let!(:user) { create(:user, name: "user_a", email: "user_a@user.com") }
+  let!(:user) { create(:user, name: "user_a", email: "user_a@user.com", password: "password", password_confirmation: "password") }
 
   context "有効性と存在性を検証する場合" do
     it { expect(user).to be_valid }
