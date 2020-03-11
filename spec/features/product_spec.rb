@@ -34,22 +34,36 @@ RSpec.feature "Products", type: :feature do
         expect(page).to have_no_content product.name
         expect(page).to have_no_content another_product[0], count: 2
         expect(page).to have_no_content another_taxon_product.name
-        expect(page).to have_link, href: category_path(another_product[0].taxons.first.id)
+        expect(page).to have_link, href: product_path(another_product[0].id)
       end
     end
 
     describe "検索機能" do
-      context "検索バーに入力した場合" do
+      context "「bakery」と検索した場合" do
         before do
           fill_in "search", with: "bakery"
           click_button "検索"
         end
 
-        it "検索結果が表示される" do
+        it "同一カテゴリーに属する商品は表示される" do
           expect(page).to have_content product.name
           expect(page).to have_content another_product[0].name
+          expect(page).to have_no_content another_taxon_product.name
           click_link product.name
           expect(current_path).to eq product_path(product)
+        end
+      end
+
+      context "「rice」と検索した場合" do
+        before do
+          fill_in "search", with: "rice"
+          click_button "検索"
+        end
+
+        it "同一カテゴリーに属する商品は表示される" do
+          expect(page).to have_content another_taxon_product.name
+          expect(page).to have_no_content product.name
+          expect(page).to have_no_content another_product[0].name
         end
       end
     end
@@ -59,10 +73,10 @@ RSpec.feature "Products", type: :feature do
     #   expect(current_path).to eq root_path
     # end
 
-    context "他のユーザーでログインした場合" do
-      # it "お気に入りが表示される" do
-      #
-      # end
-    end
+    # context "他のユーザーでログインした場合" do
+    #   # it "お気に入りが表示される" do
+    #   #
+    #   # end
+    # end
   end
 end
