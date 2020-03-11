@@ -19,11 +19,11 @@ RSpec.describe "Products", type: :request do
         log_in(user)
         get new_product_path
       end
-
       it "リクエストが成功する" do
         expect(response).to have_http_status 200
       end
     end
+    
     context "ログインしていない場合" do
       before do
         get new_product_path

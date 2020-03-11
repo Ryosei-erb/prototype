@@ -7,5 +7,8 @@ FactoryBot.define do
     password { "secret" }
     password_confirmation { "secret" }
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/53ma03.jpg')) }
+    trait :invalid do
+      name { nil }
+    end
   end
 end
