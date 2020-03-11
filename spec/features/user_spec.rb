@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
   let!(:user) { create(:user, email: "b@b.com") }
-  let!(:taxon) {create(:taxon) }
+  let!(:taxon) { create(:taxon) }
   let!(:product) { create(:product, user: user, taxons: [taxon]) }
-  let!(:room) { create(:room, product: product)}
+  let!(:room) { create(:room, product: product) }
 
   before do
     visit new_login_path
@@ -21,7 +21,7 @@ RSpec.feature "Users", type: :feature do
         fill_in "説明", with: product.description
         fill_in "受取り時間", with: product.pickup_times
         fill_in "価格", with: product.price
-        attach_file "product_image", "#{Rails.root}/spec/fixtures/53ma03.jpg" #第一引数 id
+        attach_file "product_image", "#{Rails.root}/spec/fixtures/53ma03.jpg" # 第一引数 id
         click_button "出品する"
         visit current_path
         expect(page).to have_button "チャットを始める"
@@ -41,6 +41,7 @@ RSpec.feature "Users", type: :feature do
         end
       end
     end
+
     describe "お気に入り機能" do
       context "お気に入りを押した場合" do
         it "お気に入りの表示が変更する" do

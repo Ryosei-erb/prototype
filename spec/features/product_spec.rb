@@ -44,6 +44,7 @@ RSpec.feature "Products", type: :feature do
       before do
         visit root_path
       end
+
       context "「bakery」と検索した場合" do
         before do
           fill_in "search", with: "bakery"
