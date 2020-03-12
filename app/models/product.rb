@@ -5,6 +5,9 @@ class Product < ApplicationRecord
   has_one :room
   has_many :favorites
   mount_uploader :image, ImageUploader
+  has_one :map
+  accepts_nested_attributes_for :map
+
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :description, presence: true

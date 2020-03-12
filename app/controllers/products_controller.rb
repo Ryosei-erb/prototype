@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
       @product.taxon_ids).where.not("id": @product.id).distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
+    @map = @product.map
+    
     @user = @product.user
     if current_user
       @current_user_memberships = Membership.where(user_id: current_user.id)
@@ -24,6 +26,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.taxons.build
+    @product.build_map
   end
 
   def create
@@ -43,14 +46,8 @@ class ProductsController < ApplicationController
       where("products.name like ?", "%#{params[:search]}%"))
   end
 
-  # def checkout
-  #   @product = Product.find(params[:id])
-  #   Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-  #   Payjp::Charge.create(currency: "jpy", amount: @product.price, card: params["payjp-token"] )
-  #   redirect_to root_path, notice: "Checkout complete"
-  # end
-
   def products_params
-    params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids)
+    params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids,
+      map_attributes: [:id, :address])
   end
 end

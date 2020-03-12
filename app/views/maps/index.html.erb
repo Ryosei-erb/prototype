@@ -1,0 +1,30 @@
+
+<script>
+if( navigator.geolocation ){
+  navigator.geolocation.getCurrentPosition( success, error, option);
+  function success(position){
+    var data = position.coords;
+    var lat = data.latitude;
+    var lng = data.longitude;
+    window.location.href = `/maps/search?latitude=${lat}&longitude=${lng}`
+  }
+
+  function error(error){
+    var errorMessage = {
+      0: "原因不明のエラーが発生しました。",
+      1: "位置情報が許可されませんでした。",
+      2: "位置情報が取得できませんでした。",
+      3: "タイムアウトしました。",
+    } ;
+    alert( errorMessage[error.code]);
+  }
+  var option = {
+    "enableHighAccuracy": false,
+    "timeout": 100 ,
+    "maximumAge": 100 ,
+  } ;
+} else {
+  alert("あなたの端末では、現在位置を取得できません。");
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAPS_API_KEY"] %>"></script>

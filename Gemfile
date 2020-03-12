@@ -44,3 +44,5 @@ gem "mini_magick"
 gem "payjp"
 gem "dotenv-rails"
 gem 'sorcery', '0.14.0'
+gem "geocoder"
+gem "geokit-rails"

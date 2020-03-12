@@ -28,6 +28,12 @@
     <%= f.select :taxon_ids, nested_set_options(Taxon) { |i| "#{"-" * i.level} #{i.name}"} %>
   </div>
   <div class="form-group col-auto">
+    <%= f.fields_for :map do |fields| %>
+      <strong><%= fields.label :address, "相手と合流したい住所(市町村までで可)" %></strong>
+      <%= fields.text_field :address, class: "form-control form-control-lg", placeholder: "福岡県春日市昇町" %>
+    <% end %>
+  </div>
+  <div class="form-group col-auto">
     <%= f.submit "出品する", class: "create-button" %>
   </div>
   <% end %>

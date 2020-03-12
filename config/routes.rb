@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'maps/index'
   root "homes#index"
   get "/products/search", to: "products#search"
   resources :products, only: [:index, :show, :new, :create] do
@@ -17,4 +18,6 @@ Rails.application.routes.draw do
   # mount ActionCable.server => "/cable"
   resources :rooms, only: [:show, :create]
   resources :messages, only: [:create]
+  resources :maps, only: [:index]
+  get "/maps/search", to: "maps#search"
 end
