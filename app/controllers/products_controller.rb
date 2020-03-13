@@ -1,15 +1,11 @@
 class ProductsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show, :search]
-  RELATING_PRODUCTS_LIMIT = 4
   def index
     @products = Product.all
   end
 
   def show
     @product = Product.find(params[:id])
-    @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
-      @product.taxon_ids).where.not("id": @product.id).distinct.
-      shuffle.take(RELATING_PRODUCTS_LIMIT)
     @map = @product.map
 
     @user = @product.user
@@ -29,7 +25,6 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.taxons.build
     @product.build_map
   end
 
@@ -44,14 +39,11 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @searched_products = Product.joins(:taxons).
-      where("taxons.name like ?", "%#{params[:search]}%").
-      or(Product.joins(:taxons).
-      where("products.name like ?", "%#{params[:search]}%"))
+    @searched_products = Product.where("products.name like ?", "%#{params[:search]}%")
   end
 
   def products_params
-    params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids,
+    params.require(:product).permit(:name, :description, :pickup_times, :image, :price,
       map_attributes: [:id, :address])
   end
 end

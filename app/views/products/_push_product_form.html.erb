@@ -23,9 +23,6 @@
       <%= f.file_field :image, class: "image_file", accept: "image/jpeg, image/peg, image/gif, image/png" %>
     <% end %>
   </div>
-  <div class="form-group col-auto taxon-select">
-    <%= f.select :taxon_ids, nested_set_options(Taxon) { |i| "#{"-" * i.level} #{i.name}"} %>
-  </div>
   <div class="form-group col-auto">
     <%= f.fields_for :map do |fields| %>
       <strong><%= fields.label :address, "相手と合流したい住所(市町村までで可)" %></strong>
