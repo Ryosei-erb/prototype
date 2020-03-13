@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      product: 商品
+      user: ユーザー
+    attributes:
+      product:
+        name: 名称
+        description: 説明
+        pickup_times: 受取り時間
+        price: 価格
+        image: 画像
+      user:
+        name: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認
+      map:
+        address: 相手と合流したい住所
