@@ -9,25 +9,25 @@ RSpec.describe Product, type: :model do
     it "商品名があれば有効" do
       product = build(:product, name: nil)
       product.valid?
-      expect(product.errors[:name]).to include("can't be blank")
+      expect(product.errors[:name]).to include("を入力してください")
     end
 
     it "商品の説明があれば有効" do
       product = build(:product, description: nil)
       product.valid?
-      expect(product.errors[:description]).to include("can't be blank")
+      expect(product.errors[:description]).to include("を入力してください")
     end
 
     it "商品の希望受取時間があれば有効" do
       product = build(:product, pickup_times: nil)
       product.valid?
-      expect(product.errors[:pickup_times]).to include("can't be blank")
+      expect(product.errors[:pickup_times]).to include("を入力してください")
     end
 
     it "商品の価格があれば有効" do
       product = build(:product, price: nil)
       product.valid?
-      expect(product.errors[:price]).to include("can't be blank")
+      expect(product.errors[:price]).to include("を入力してください")
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe Product, type: :model do
     it "商品名が2文字以上であれば有効" do
       product.name = "a"
       product.valid?
-      expect(product.errors[:name]).to include("is too short (minimum is 2 characters)")
+      expect(product.errors[:name]).to include("は2文字以上で入力してください")
     end
   end
 

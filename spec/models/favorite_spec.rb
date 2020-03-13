@@ -10,12 +10,12 @@ RSpec.describe Favorite, type: :model do
   it "user_idがあれば有効" do
     favorite.user_id = nil
     favorite.valid?
-    expect(favorite.errors[:user_id]).to include("can't be blank")
+    expect(favorite.errors[:user_id]).to include("を入力してください")
   end
 
   it "product_idがあれば有効" do
     favorite.product_id = nil
     favorite.valid?
-    expect(favorite.errors[:product_id]).to include("can't be blank")
+    expect(favorite.errors[:product_id]).to include("を入力してください")
   end
 end

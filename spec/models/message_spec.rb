@@ -9,6 +9,6 @@ RSpec.describe Message, type: :model do
   it "Contentがあれば有効" do
     message = build(:message, content: nil)
     message.valid?
-    expect(message.errors[:content]).to include("can't be blank")
+    expect(message.errors[:content]).to include("を入力してください")
   end
 end

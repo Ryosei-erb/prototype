@@ -13,13 +13,13 @@ RSpec.describe User, type: :model do
     it "ユーザーネームがあれば有効" do
       user = build(:user, name: nil)
       user.valid?
-      expect(user.errors[:name]).to include("can't be blank")
+      expect(user.errors[:name]).to include("を入力してください")
     end
 
     it "メールアドレスがあれば有効" do
       user = build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to include("を入力してください")
     end
   end
 
@@ -27,13 +27,13 @@ RSpec.describe User, type: :model do
     it "ユーザーネームが51字以上であれば無効" do
       user.name = "a" * 51
       user.valid?
-      expect(user.errors[:name]).to include("is too long (maximum is 50 characters)")
+      expect(user.errors[:name]).to include("は50文字以内で入力してください")
     end
 
     it "メールアドレスが256字以上であれば無効" do
       user.email = "a" * 256
       user.valid?
-      expect(user.errors[:email]).to include("is too long (maximum is 255 characters)")
+      expect(user.errors[:email]).to include("は255文字以内で入力してください")
     end
   end
 
@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
       invalid_addresses.each do |invalid_address|
         user.email = invalid_address
         user.valid?
-        expect(user.errors[:email]).to include("is invalid")
+        expect(user.errors[:email]).to include("は不正な値です")
       end
     end
   end
@@ -70,14 +70,14 @@ RSpec.describe User, type: :model do
     it "重複したメールアドレスなら無効" do
       user = build(:user, email: "validemail@valid.com")
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include("はすでに存在します")
     end
 
     it "大文字も同様に無効" do
       user = build(:user, email: "validemail@valid.com")
       user.email.upcase
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include("はすでに存在します")
     end
   end
 end
