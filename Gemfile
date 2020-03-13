@@ -17,6 +17,7 @@ group :test do
   gem 'launchy'
   gem 'rails-controller-testing'
 end
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
@@ -31,6 +32,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "spring-commands-rspec"
+end
+
+group :production do
+  gem 'fog',  '1.42'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
