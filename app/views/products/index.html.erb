@@ -1,0 +1,9 @@
+<div class="main-wrapper">
+  <div class="container">
+    <div class="row">
+      <% @products.each do |product| %>
+        <%= render "shared/product_segment", product: product %>
+      <% end %>
+    </div>
+  </div>
+</div>

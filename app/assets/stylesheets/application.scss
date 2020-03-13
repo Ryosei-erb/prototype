@@ -261,6 +261,40 @@ body {
   padding-top: 3px;
   padding-left: 444px;
 }
+.root {
+  position: relative;
+}
+.root-message-one {
+  color: white;
+  position: absolute;
+  font-size: 2em;
+  transform: translate(-50%, -50%);
+  top: 38%;
+  left: 50%;
+}
+.root-message-two {
+  color: white;
+  position: absolute;
+  font-size: 29px;
+  transform: translate(-50%, -50%);
+  top: 45%;
+  left: 55%;
+}
+.root-link {
+  position: absolute;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+  top: 53%;
+  left: 50%;
+  font-size: 20px;
+}
+.root-icon {
+  position: absolute;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+  top: 52%;
+  left: 55%;
+}
 .root-screen {
   background: image-url("platter-2009590_1280.webp");
   background-postion: center center;
@@ -279,6 +313,7 @@ body {
   bottom: 0;
   left: 0;
 }
+
 .start-chat-button {
   background-color: #00b7ce;
   color: #ffffff;
@@ -296,7 +331,6 @@ body {
   background-color: #ffffff;
   color: #00b7ce;
 }
-
 .restart-chat-button {
   background-color: #00b7ce;
   color: #ffffff;
@@ -404,4 +438,14 @@ body {
   color: red;
   background-color: #FADBDA;
   border-radius: 3px;
+}
+.signin-link a {
+  text-decoration: none;
+  padding-top: 3px;
+  padding-left: 367px;
+}
+.signup-link a {
+  text-decoration: none;
+  padding-top: 3px;
+  padding-left: 23px;
 }

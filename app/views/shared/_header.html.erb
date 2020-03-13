@@ -17,5 +17,11 @@
       <%= link_to "ログアウト", logout_path, method: :delete, style: "color: #00b7ce;" %>
     </div>
   <% else %>
+    <div class="signin-link">
+      <%= link_to "ログイン" , new_login_path, method: :get, style: "color: #666666" %>
+    </div>
+    <div class="signup-link">
+      <%= link_to "ユーザー登録", signup_path, method: :get, style: "color: #666666" %>
+    </div>
   <% end %>
 </nav>

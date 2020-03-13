@@ -1,13 +1,17 @@
 class ProductsController < ApplicationController
-  skip_before_action :require_login, only: [:show, :search]
+  skip_before_action :require_login, only: [:index, :show, :search]
   RELATING_PRODUCTS_LIMIT = 4
+  def index
+    @products = Product.all
+  end
+
   def show
     @product = Product.find(params[:id])
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
       @product.taxon_ids).where.not("id": @product.id).distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
     @map = @product.map
-    
+
     @user = @product.user
     if current_user
       @current_user_memberships = Membership.where(user_id: current_user.id)
