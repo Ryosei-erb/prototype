@@ -1,29 +1,28 @@
 <div class="main-wrapper">
   <div class="container">
     <div class="row">
-      <div id="map"></div>
+      <div id="area-map"></div>
     </div>
   </div>
 </div>
 
 <script>
-let map
+let area_map
 let geocoder
 
 function initMap() {
 
   geocoder = new google.maps.Geocoder()
-  map = new google.maps.Map(document.getElementById("map"), {
+  area_map = new google.maps.Map(document.getElementById("area-map"), {
     center: { lat: <%= @latitude %>, lng: <%= @longitude %> },
     zoom: 15,
   });
   <% @maps.each do |map| %>
   marker_<%= map.id %> = new google.maps.Marker({
     position: { lat: <%= map.latitude %> , lng: <%= map.longitude %> },
-    map: map
+    map: area_map
   });
   <% end %>
 }
-
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAPS_API_KEY"] %>&callback=initMap" async defer></script>

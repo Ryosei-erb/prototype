@@ -12,6 +12,7 @@
         </div>
       </div>
     </div>
+    <% unless @map.latitude.blank? %>
     <div class="container">
       <div class="single-product-locationBox">
         <div class="row relating-products-tab">Google Map</div>
@@ -20,6 +21,7 @@
         </div>
       </div>
     </div>
+    <% end %>
     <div class="container">
       <div class="row relating-products-tab">関連商品</div>
       <div class="row relating-products">
@@ -34,6 +36,7 @@
 <script>
 let map
 let geocoder
+
 function initMap() {
   geocoder = new google.maps.Geocoder()
   map = new google.maps.Map(document.getElementById("map"), {
