@@ -1,6 +1,5 @@
 <div class="row justify-content-center">
   <%= form_with(url: create_login_path, method: :post, local: true) do |f| %>
-  <% end %>
   <div class="form-group col-auto">
     <strong><%= f.label :email, "メールアドレス" %></strong>
     <%= f.email_field :email, class: "form-control form-control-lg" %>

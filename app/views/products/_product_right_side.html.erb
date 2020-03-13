@@ -19,46 +19,6 @@
     <div class="pickup_timesBox-sub-first">希望受け取り日時:</div>
     <div class="pickup_timesBox-sub-second"><%= product.pickup_times %></div>
   </div>
-  <div class="favoritesBox">
-    <% if current_user %>
-      <% if product.favorited_by?(current_user) %>
-        <div class="like-you">
-          <%= link_to product_favorites_path(product.id), method: :delete do %>
-            <div class="disattach-star"><%= icon "fas", "star" %></div>
-            <div class="like-tab">「お気に入り」済み: </div>
-            <div class="like-count"><%= product.favorites.count %></div>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="like-you">
-          <%= link_to product_favorites_path(product.id), method: :post do %>
-            <div class="attach-star"><%= icon "far", "star" %></div>
-            <div class="like-tab">お気に入り登録: </div>
-            <div class="like-count"><%= product.favorites.count %></div>
-          <% end %>
-        </div>
-      <% end %>
-    <% else %>
-        <div class="like-tab">お気に入り数: </div>
-        <div class="like-count"><%= product.favorites.count %></div>
-    <% end %>
-  </div>
-  <div class="chatBox">
-      <% if @has_room %>
-        <div class="already-has-chatting">
-          <%= button_to "チャットを再開する", room_path(@room_id), method: :get, class: "restart-chat-button" %>
-        </div>
-      <% else %>
-        <div class="start-chat">
-          <%= form_with url: rooms_path, method: :post, local: true do |f| %>
-            <%= hidden_field_tag :product_id, product.id %>
-            <%= hidden_field_tag :user_id, user.id %>
-            <%= f.submit "チャットを始める", class: "start-chat-button" %>
-          <% end %>
-        </div>
-      <% end %>
-  </div>
-
-  <div class="locationBox">
-  </div>
+  <%= render "favorites_box", product: product %>
+  <%= render "chat_box", product: product, user: user %>
 </div>

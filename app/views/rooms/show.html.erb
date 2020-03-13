@@ -1,45 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 offset-2">
-      <div class="chat-room-title">
-        <!-- <div class="chat-user-name">
-          <div class="chat-user-name-tag">To:</div>
-          <div class="chat-user-name-content">
-
-          </div>
-        </div> -->
-        <div class="chat-product-name">
-          <div class="chat-product-name-tag">About:</div>
-          <div class="chat-product-name-content">
-            <%= @room.product.name %>
-          </div>
-        </div>
-      </div>
-      <hr>
-    </div>
+    <%= render "chat_room_title", room: @room %>
   </div>
   <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="message-area">
-        <% if @messages.present? %>
-          <% @messages.each do |message| %>
-          <div class="message-one">
-            <% user = message.user %>
-            <% class_suffix = current_user == user ? "right" : "left" %>
-            <div class="user-icon-<%= class_suffix %>">
-              <%= image_tag message.user.image.url(:small) %>
-            </div>
-            <div class="balloon-<%= class_suffix %>">
-              <div class="balloon-content"><%= message.content %></div>
-              <div class="timestamp">
-                <%= time_ago_in_words(message.created_at) %> ago.
-              </div>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render "message_area", messages: @messages %>
   </div>
   <div class="row">
     <div class="col-md-8 offset-md-2" >

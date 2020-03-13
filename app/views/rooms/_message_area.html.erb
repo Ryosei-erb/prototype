@@ -1,0 +1,25 @@
+<div class="col-md-8 offset-md-2">
+  <div class="message-area">
+    <% if messages.present? %>
+      <% messages.each do |message| %>
+      <div class="message-one">
+        <% user = message.user %>
+        <% class_suffix = current_user == user ? "right" : "left" %>
+        <div class="user-icon-<%= class_suffix %>">
+          <% if message.user.image.url(:small) %>
+            <%= image_tag message.user.image.url(:small) %>
+          <% else %>
+            <%= message.user.name %>
+          <% end %>
+        </div>
+        <div class="balloon-<%= class_suffix %>">
+          <div class="balloon-content"><%= message.content %></div>
+          <div class="timestamp">
+            <%= time_ago_in_words(message.created_at) %>前
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
