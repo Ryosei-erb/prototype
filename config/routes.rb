@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "homes#index"
   get "/products/search", to: "products#search"
   get "/products/:id/location", to: "products#location"
+  get "/products/:id/sold", to: "products#sold", as: "sold"
+  post "/products/:id/sold", to: "products#resale", as: "resale"
   resources :products, only: [:index, :show, :new, :create, :destroy] do
     collection do
       post "/checkout/:id", to: "products#checkout", as: "checkout"

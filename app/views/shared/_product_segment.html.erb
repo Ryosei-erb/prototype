@@ -1,7 +1,14 @@
 <div class="col-md-3 product-space">
   <%= link_to product_path(product.id) do %>
     <div class="image-space">
-      <%= image_tag product.image.url(:product) %>
+      <% if product.state == "sold" %>
+      <div class="sold-index-imageBox">
+        <%= image_tag product.image.url(:product) %>
+        <p>---SOLD OUT---</p>
+      </div>
+      <% else %>
+       <%= image_tag product.image.url(:product) %>
+      <% end %>
     </div>
     <div class="product-name-price-space">
       <div class="product-name-space"><%= product.name %></div>

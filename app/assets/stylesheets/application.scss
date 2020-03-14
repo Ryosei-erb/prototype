@@ -468,6 +468,7 @@ body {
 
 .delete-button {
   background-color: #e03448;
+  color: #ffffff;
   font-size: 20px;
   width: 233px;
   display: block;
@@ -479,6 +480,8 @@ body {
 }
 .delete-button:hover {
   text-decoration: none;
+  color: #e03448;
+  background-color: #ffffff;
 }
 
 .distanceBox {
@@ -493,4 +496,27 @@ body {
 .distance-content {
   display: inline-block;
   padding-left: 10px;
+}
+
+.sold-imageBox {
+  padding: 50px 50px 50px 30px;
+  position: relative;
+}
+.sold-imageBox p {
+  position: absolute;
+  color: #D2D2D2;
+  top: 250px;
+  left: 120px;
+  font-size: 46px;
+}
+
+.sold-index-imageBox {
+  position: relative;
+}
+.sold-index-imageBox p {
+  position: absolute;
+  color: #D2D2D2;
+  top: 120px;
+  left: 30px;
+  font-size: 30px;
 }

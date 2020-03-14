@@ -1,7 +1,10 @@
 <div class="main-wrapper">
   <div class="container">
-    <div class="search-products-tab"><%= "「#{params[:search]}」の検索結果" %></div>
-    <div class="row">
+    <div class="row product-lists">
+      <div class="products-tab">
+        <%= "「#{params[:search]}」の検索結果" %></div>
+      </div>
+    <div class="row product-lists">
       <% @searched_products.each do |product| %>
         <%= render "shared/product_segment", product: product %>
       <% end %>

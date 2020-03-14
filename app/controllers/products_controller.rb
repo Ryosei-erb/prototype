@@ -6,22 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @map = @product.map
-
-
-    @user = @product.user
-    if current_user
-      @current_user_memberships = Membership.where(user_id: current_user.id)
-      @current_user_memberships.each do |current_user_membership|
-        if current_user_membership.room.product_id == @product.id
-          @has_room = true
-          @room_id = current_user_membership.room_id
-        else
-          @room = Room.new
-          @membership = Membership.new
-        end
-      end
-    end
+    redirect_to sold_path if @product.state == "sold"
   end
 
   def new
@@ -71,6 +56,19 @@ class ProductsController < ApplicationController
         end
       end
     end
+  end
+
+  def sold
+    @product = Product.find(params[:id])
+    @product.state = "sold"
+    @product.save
+  end
+
+  def resale
+    @product = Product.find(params[:id])
+    @product.state = "sale"
+    @product.save
+    redirect_to @product
   end
 
   def products_params

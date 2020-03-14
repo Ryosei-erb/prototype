@@ -19,20 +19,12 @@
     <div class="pickup_timesBox-sub-first">希望受け取り日時:</div>
     <div class="pickup_timesBox-sub-second"><%= product.pickup_times %></div>
   </div>
-  <%= render "favorites_box", product: product %>
-  <% unless @map.latitude.blank? %>
-  <div class="distanceBox">
-    <div class="distance-word">現在地との距離:</div>
-    <div class="distance-content"><%= @distance.truncate(2) %>km</div>
-  </div>
-  <% end %>
   <div class="row">
-    <%= render "chat_box", product: product, user: user %>
     <div class="delete-buttonBox">
       <% if current_user && product.user == current_user %>
-        <form action="/products/<%= product.id %>/sold" method="get">
-          <button onclick="this.from.submit()" name="name" value="sold" class="delete-button">SOLDとする</button>
-        </form>
+        <%= form_with model: product, url: resale_path(product.id), method: :post, local: true do |f| %>
+          <%= f.submit "SOLDを解除", class: "delete-button" %>
+        <% end %>
       <% end %>
     </div>
   </div>
