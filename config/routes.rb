@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'maps/index'
   root "homes#index"
   get "/products/search", to: "products#search"
-  resources :products, only: [:index, :show, :new, :create] do
+  resources :products, only: [:index, :show, :new, :create, :destroy] do
     collection do
       post "/checkout/:id", to: "products#checkout", as: "checkout"
     end

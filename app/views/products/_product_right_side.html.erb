@@ -20,5 +20,12 @@
     <div class="pickup_timesBox-sub-second"><%= product.pickup_times %></div>
   </div>
   <%= render "favorites_box", product: product %>
-  <%= render "chat_box", product: product, user: user %>
+  <div class="row">
+    <%= render "chat_box", product: product, user: user %>
+    <div class="delete-buttonBox">
+      <% if current_user && product.user == current_user %>
+        <%= link_to "出品を取り消す", product_path(product.id), method: :delete, style: "color: #ffffff", class: "delete-button" %>
+      <% end %>
+    </div>
+  </div>
 </div>
