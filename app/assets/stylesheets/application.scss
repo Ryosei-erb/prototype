@@ -57,7 +57,7 @@ body {
   padding: 50px 50px 50px 30px;
 }
 .single-nameBox {
-  padding-top: 41px;
+  padding-top: 10px;
   border-bottom: solid 1px #D3D3D3;
 }
 .single-priceBox {
@@ -479,4 +479,18 @@ body {
 }
 .delete-button:hover {
   text-decoration: none;
+}
+
+.distanceBox {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #D3D3D3;
+}
+.distance-word {
+  display: inline-block;
+  color: #808080;
+}
+.distance-content {
+  display: inline-block;
+  padding-left: 10px;
 }

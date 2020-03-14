@@ -1,44 +1,30 @@
-<div class="main-wrapper">
-  <section class="main-content py-3">
-    <div class="container">
-      <div class="row productBox">
-        <div class="col-md-6">
-          <div class="imageBox">
-            <div class="inside-imageBox"><%= image_tag @product.image.url(:large) %></div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <%= render "product_right_side", product: @product, user: @user %>
-        </div>
-      </div>
-    </div>
-    <% unless @map.latitude.blank? %>
-    <div class="container">
-      <div class="single-product-locationBox">
-        <div class="row relating-products-tab">出品者の希望する合流場所</div>
-        <div class="row single-product-location">
-          <div id="map"></div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </section>
-</div>
-
 <script>
-let map
-let geocoder
+if( navigator.geolocation ){
+  navigator.geolocation.getCurrentPosition( success, error, option);
+  function success(position){
+    var data = position.coords;
+    var lat = data.latitude;
+    var lng = data.longitude;
+    window.location.href = `/products/<%= @product.id %>/location?latitude=${lat}&longitude=${lng}`
+  }
 
-function initMap() {
-  geocoder = new google.maps.Geocoder()
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: <%= @map.latitude %>, lng: <%= @map.longitude %> },
-    zoom: 15,
-  });
-  marker = new google.maps.Marker({
-    position: { lat: <%= @map.latitude %>, lng: <%= @map.longitude %> },
-    map: map
-  });
+  function error(error){
+    var errorMessage = {
+      0: "原因不明のエラーが発生しました。",
+      1: "位置情報が許可されませんでした。",
+      2: "位置情報が取得できませんでした。",
+      3: "タイムアウトしました。",
+    } ;
+    alert( errorMessage[error.code]);
+  }
+  var option = {
+    "enableHighAccuracy": false,
+    "timeout": 100 ,
+    "maximumAge": 100 ,
+  } ;
+} else {
+  alert("あなたの端末では、現在位置を取得できません。");
 }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAPS_API_KEY"] %>&callback=initMap" async defer></script>

@@ -3,8 +3,8 @@ class MapsController < ApplicationController
   def index
   end
   def search
-    @latitude = params[:latitude].to_f
-    @longitude = params[:longitude].to_f
-    @maps = Map.all.within(3, origin: [params[:latitude].to_f, params[:longitude].to_f])
+    @latitude = params[:latitude]
+    @longitude = params[:longitude]
+    @maps = Map.all.within(3, origin: [params[:latitude], params[:longitude]])
   end
 end

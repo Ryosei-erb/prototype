@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @map = @product.map
 
+
     @user = @product.user
     if current_user
       @current_user_memberships = Membership.where(user_id: current_user.id)
@@ -46,6 +47,30 @@ class ProductsController < ApplicationController
 
   def search
     @searched_products = Product.where("products.name like ?", "%#{params[:search]}%")
+  end
+
+  def location
+    @product = Product.find(params[:id])
+    @map = @product.map
+    @current_user_latitude = params[:latitude]
+    @current_user_longitude = params[:longitude]
+    @product_latitude = @product.map.latitude
+    @product_longitude = @product.map.longitude
+    @distance = Geocoder::Calculations.distance_between([@current_user_latitude, @current_user_longitude], [@product_latitude, @product_longitude])
+
+    @user = @product.user
+    if current_user
+      @current_user_memberships = Membership.where(user_id: current_user.id)
+      @current_user_memberships.each do |current_user_membership|
+        if current_user_membership.room.product_id == @product.id
+          @has_room = true
+          @room_id = current_user_membership.room_id
+        else
+          @room = Room.new
+          @membership = Membership.new
+        end
+      end
+    end
   end
 
   def products_params

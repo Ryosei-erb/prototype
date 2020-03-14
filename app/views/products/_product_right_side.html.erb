@@ -1,3 +1,4 @@
+
 <div class="product-right-side">
   <div class="back-to-the-index">
     <%= link_to products_path do %>
@@ -20,6 +21,10 @@
     <div class="pickup_timesBox-sub-second"><%= product.pickup_times %></div>
   </div>
   <%= render "favorites_box", product: product %>
+  <div class="distanceBox">
+    <div class="distance-word">現在地との距離:</div>
+    <div class="distance-content"><%= @distance.truncate(2) %>km</div>
+  </div>
   <div class="row">
     <%= render "chat_box", product: product, user: user %>
     <div class="delete-buttonBox">
