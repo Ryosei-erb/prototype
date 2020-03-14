@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user = login(params[:email], params[:password], params[:remember])
     if @user
-      redirect_back_or_to root_path
+      redirect_back_or_to products_path
     else
       render :new
     end

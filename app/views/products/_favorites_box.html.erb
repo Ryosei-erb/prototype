@@ -1,5 +1,5 @@
 <div class="favoritesBox">
-  <% if current_user %>
+  <% if current_user && product.user.name != current_user.name  %>
     <% if product.favorited_by?(current_user) %>
       <div class="like-you">
         <%= link_to product_favorites_path(product.id), method: :delete do %>
