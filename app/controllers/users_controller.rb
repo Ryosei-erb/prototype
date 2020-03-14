@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   def show
     @user = User.find(params[:id])
-    @favorites_products = @user.favorites.map { |f| f.product }
+    @favorite_products = @user.favorites.map { |f| f.product }
   end
 
   def new

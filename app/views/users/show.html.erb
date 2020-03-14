@@ -1,10 +1,28 @@
 <div class="main-wrapper">
+  <% unless @favorite_products.blank? %>
   <div class="container">
-    <div class="search-products-tab"><%= "「#{@user.name}」のお気に入りリスト" %></div>
-    <div class="row">
-      <% @favorites_products.each do |product| %>
+    <div class="row product-lists">
+      <div class="products-tab"><%= "「#{@user.name}」のお気に入りリスト" %></div>
+    </div>
+    <div class="row product-lists">
+      <% @favorite_products.each do |product| %>
       <%= render "shared/product_segment", product: product %>
       <% end %>
     </div>
   </div>
+  <% end %>
+  <% unless @user.products.blank? %>
+  <div class="container">
+    <div class="row product-lists">
+      <div class="products-tab">
+        <%= "「#{@user.name}」の出品リスト" %>
+      </div>
+    </div>
+    <div class="row product-lists">
+      <% @user.products.each do |product| %>
+        <%= render "shared/product_segment", product: product %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
