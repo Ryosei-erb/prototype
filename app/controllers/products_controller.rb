@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :require_login, only: [:index, :show, :search]
+  skip_before_action :require_login, only: [:index, :show, :search, :location, :sold, :resale]
   def index
     @products = Product.all
   end

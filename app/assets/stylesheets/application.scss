@@ -261,11 +261,7 @@ body {
   color: #808080;
   padding-left: 6px;
 }
-.logout-link a {
-  text-decoration: none;
-  padding-top: 3px;
-  padding-left: 444px;
-}
+
 .root {
   position: relative;
 }
@@ -444,26 +440,12 @@ body {
   background-color: #FADBDA;
   border-radius: 3px;
 }
-.signin-link a {
-  text-decoration: none;
-  padding-top: 3px;
-  padding-left: 367px;
-}
-.signup-link a {
-  text-decoration: none;
-  padding-top: 3px;
-  padding-left: 23px;
-}
+
 #area-map {
   height: 600px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-}
-
-.user-detail-link a {
-  padding-top: 3px;
-  padding-left: 23px;
 }
 
 .delete-button {
@@ -523,4 +505,42 @@ body {
 .infowindow a {
   color: #666666;
   font-size: 16px;
+}
+
+.user-detail-link a {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+.logout-link a {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+.product-index-link a {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+.map-link a {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+.push-product-link a {
+  padding-top: 3px;
+  padding-left: 100px;
+}
+
+.else-map-link a {
+  padding-top: 3px;
+  padding-left: 100px;
+}
+.else-product-index-link a {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+.signin-link a {
+  padding-top: 3px;
+  padding-left: 20px;
+}
+.signup-link a {
+  padding-top: 3px;
+  padding-left: 20px;
 }
