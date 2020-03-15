@@ -34,6 +34,12 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: <%= @map.latitude %>, lng: <%= @map.longitude %> },
     zoom: 15,
+    styles: [{
+        stylers: [
+          { hue: "#00b7ce" }, { saturation: -50 },
+          { lightness: 20 }, {gamma: 0.5 }
+    ]
+  }],
   });
   marker = new google.maps.Marker({
     position: { lat: <%= @map.latitude %>, lng: <%= @map.longitude %> },

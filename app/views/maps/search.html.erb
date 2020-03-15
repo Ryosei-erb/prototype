@@ -5,24 +5,46 @@
     </div>
   </div>
 </div>
-
 <script>
-let area_map
-let geocoder
+function initMap(){
+  var products = [
+    <% @maps.each do |map| %>
+    ["<%= map.product.name %>", <%= map.latitude %>, <%= map.longitude %>, <%= map.product.id %>, "<%= map.address %>"],
+    <% end %>
+  ];
 
-function initMap() {
-
-  geocoder = new google.maps.Geocoder()
-  area_map = new google.maps.Map(document.getElementById("area-map"), {
-    center: { lat: <%= @latitude %>, lng: <%= @longitude %> },
+  var map = new google.maps.Map(document.getElementById("area-map"), {
     zoom: 15,
+    center: new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>),
+    styles: [{
+        stylers: [
+          { hue: "#00b7ce" }, { saturation: -50 },
+          { lightness: 20 }, {gamma: 0.5 }
+    ]
+  }],
   });
-  <% @maps.each do |map| %>
-  marker_<%= map.id %> = new google.maps.Marker({
-    position: { lat: <%= map.latitude %> , lng: <%= map.longitude %> },
-    map: area_map
-  });
-  <% end %>
+  var infowindow = new google.maps.InfoWindow;
+  var marker, i;
+  for(i = 0; i < products.length; i++) {
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(products[i][1], products[i][2]),
+      map: map,
+    });
+    google.maps.event.addListener(marker, "click", (function(marker, i){
+    return function(){
+      infowindow.setContent(
+          '<div class="infowindow">' +
+          '<a href="/products/' + products[i][3] + '">' +
+          '商品名:「' + products[i][0] + '」' +
+          '<br>' +
+          '住所:「' + products[i][4] + '」' +
+          '</a>' +
+          '</div>'
+      );
+      infowindow.open(map, marker);
+    }
+  })(marker, i));
+  }
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GMAPS_API_KEY"] %>&callback=initMap" async defer></script>
