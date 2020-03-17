@@ -1,13 +1,13 @@
 <div class="main-wrapper">
-  <section class="main-content py-3">
+  <section class="main-content">
     <div class="container">
       <div class="row productBox">
-        <div class="col-md-6">
+        <div class="col-sm-12 col-lg-6">
           <div class="imageBox">
             <div class="inside-imageBox"><%= image_tag @product.image.url(:large) %></div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-12 col-lg-6">
           <%= render "product_right_side", product: @product, user: @user %>
         </div>
       </div>

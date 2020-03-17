@@ -1,14 +1,14 @@
 <div class="main-wrapper">
-  <section class="main-content py-3">
+  <section class="main-content">
     <div class="container">
       <div class="row productBox">
-        <div class="col-md-6">
+        <div class="col-sm-12 col-lg-6">
           <div class="sold-imageBox">
             <%= image_tag @product.image.url(:large) %>
             <p>---SOLD OUT---</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-12 col-lg-6">
           <%= render "sold_product_right_side", product: @product %>
         </div>
       </div>

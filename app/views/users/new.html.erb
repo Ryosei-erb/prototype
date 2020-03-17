@@ -1,8 +1,16 @@
 <div class="main-wrapper">
   <div class="py-3">
     <div class="container formBox">
-      <h3 class="mb-3 row justify-content-center"><strong>ユーザー登録</strong></h3>
-        <%= render "push_user_form", user: @user %>
+      <div class="row">
+        <div class="col-sm-12 form-title">
+          <strong>ユーザー登録</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <%= render "push_user_form", user: @user %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
