@@ -52,3 +52,4 @@ gem 'sorcery', '0.14.0'
 gem "geocoder"
 gem "geokit-rails"
 gem "rails-i18n"
+gem "bullet"
