@@ -69,6 +69,9 @@ class ProductsController < ApplicationController
         end
       end
     end
+
+    #新規商品表示機能
+    @new_release_products = Product.order(created_at: "desc").distinct.limit(4)
   end
 
   def sold
