@@ -1,6 +1,18 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
+Airbnb/OptArgParameters:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Layout/DotPosition:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
 AllCops:
   Exclude:
     - 'db/**/*'

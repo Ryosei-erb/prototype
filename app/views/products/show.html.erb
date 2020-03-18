@@ -1,3 +1,39 @@
+<% provide(:title, "商品詳細ページ") %>
+<div class="main-wrapper">
+  <section class="main-content">
+    <div class="container">
+      <div class="row productBox">
+        <div class="col-sm-12 col-lg-6">
+          <div class="imageBox">
+            <div class="inside-imageBox"><%= image_tag @product.image.url(:large) %></div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+          <%= render "product_right_side", product: @product, user: @user %>
+        </div>
+      </div>
+    </div>
+    <% if @relating_products.present? %>
+    <div class="container">
+      <div class="row relating-products-tab">関連商品</div>
+      <div class="row relating-products">
+        <% @relating_products.each do |product| %>
+          <%= render "shared/product_segment", product: product %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <div class="container">
+      <div class="row new-release-products-tab">新作商品</div>
+      <div class="row new-release-products">
+        <% @new_release_products.each do |product| %>
+          <%= render "shared/product_segment", product: product %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
+
 <script>
 if( navigator.geolocation ){
   navigator.geolocation.getCurrentPosition( success, error, option);

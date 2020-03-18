@@ -24,10 +24,6 @@ RSpec.feature "Categories", type: :feature do
         expect(page).to have_no_content another_taxon_product.name
         click_link product.name
         expect(current_path).to eq product_path(product)
-        within ".product-right-side" do
-          click_link "一覧ページへ戻る"
-        end
-        expect(current_path).to eq category_path(taxon)
       end
     end
   end

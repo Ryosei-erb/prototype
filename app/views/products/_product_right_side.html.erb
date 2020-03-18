@@ -3,7 +3,7 @@
     <% if product.taxons.present? %>
     <%= link_to category_path(product.taxons.first.id) do %>
       <div class="icon-reply"><%= icon "fas", "reply" %></div>
-      <p>カテゴリー一覧ページへ戻る</p>
+      <p>カテゴリー一覧ページへ</p>
     <% end %>
   <% end %>
   </div>
@@ -22,11 +22,13 @@
     <div class="pickup_timesBox-sub-second"><%= product.pickup_times %></div>
   </div>
   <%= render "favorites_box", product: product %>
-  <% unless @map.latitude.blank? %>
-  <div class="distanceBox">
-    <div class="distance-word">現在地との距離:</div>
-    <div class="distance-content"><%= @distance.truncate(2) %>km</div>
-  </div>
+  <% if @map %>
+    <% unless @map.latitude.blank? %>
+      <div class="distanceBox">
+        <div class="distance-word">現在地との距離:</div>
+        <div class="distance-content"><%= @distance.truncate(2) %>km</div>
+      </div>
+    <% end %>
   <% end %>
   <div class="row">
     <div class="chat-space">

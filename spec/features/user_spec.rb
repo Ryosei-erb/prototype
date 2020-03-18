@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
   let!(:user) { create(:user, email: "b@b.com") }
+  let!(:another_user) { create(:user, name: "Another", email: "c@c.com") }
   let!(:taxon) { create(:taxon) }
   let!(:product) { create(:product, user: user, taxons: [taxon]) }
+  let!(:another_product) { create(:product, name: "france", user: another_user, taxons: [taxon]) }
   let!(:room) { create(:room, product: product) }
 
   before do
@@ -13,8 +15,8 @@ RSpec.feature "Users", type: :feature do
     click_button "ログインする"
   end
 
-  describe "商品追加機能" do
-    context "商品を追加した場合" do
+  describe "商品出品機能" do
+    context "商品を出品した場合" do
       it "商品画面に遷移する" do
         visit new_product_path
         fill_in "名称", with: product.name
@@ -29,7 +31,7 @@ RSpec.feature "Users", type: :feature do
       end
     end
 
-    describe "チャット機能" do
+    describe "ダイレクトメッセージ機能" do
       context "チャットを始める場合" do
         it "チャット画面に遷移し、チャットが表示される" do
           visit product_path(product)
@@ -45,20 +47,14 @@ RSpec.feature "Users", type: :feature do
     describe "お気に入り機能" do
       context "お気に入りを押した場合" do
         it "お気に入りの表示が変更する" do
-          visit product_path(product)
+          visit product_path(another_product)
           within ".favoritesBox" do
             expect(page).to have_content "お気に入り登録"
             expect(page).to have_content "0"
             click_link "お気に入り登録"
-          end
-          visit product_path(product)
-          within ".favoritesBox" do
             expect(page).to have_content "「お気に入り」済み"
             expect(page).to have_content "1"
             click_link "「お気に入り」済み"
-          end
-          visit product_path(product)
-          within ".favoritesBox" do
             expect(page).to have_content "お気に入り登録"
             expect(page).to have_content "0"
           end

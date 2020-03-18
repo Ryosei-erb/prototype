@@ -7,6 +7,6 @@ RSpec.describe Taxon, type: :model do
   it "名称があれば有効" do
     taxon = build(:taxon, name: nil)
     taxon.valid?
-    expect(taxon.errors[:name]).to include("can't be blank")
+    expect(taxon.errors[:name]).to include("を入力してください")
   end
 end

@@ -43,7 +43,7 @@ RSpec.describe "Users", type: :request do
       end
       it "リダイレクトする" do
         post users_path, params: { user: @user_params }
-        expect(response).to redirect_to new_product_path
+        expect(response).to redirect_to products_path
       end
     end
 

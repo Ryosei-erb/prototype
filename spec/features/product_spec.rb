@@ -20,7 +20,7 @@ RSpec.feature "Products", type: :feature do
       expect(current_path).to eq product_path(product)
       expect(page).to have_content "検索"
       expect(page).to have_link, href: category_path(product.taxons.first.id)
-      expect(page).to have_content "一覧ページへ戻る"
+      expect(page).to have_content "カテゴリー一覧ページへ"
       expect(page).to have_content product.name
       expect(page).to have_content product.price
       expect(page).to have_content product.description

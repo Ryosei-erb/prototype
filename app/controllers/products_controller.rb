@@ -8,6 +8,29 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     redirect_to sold_path if @product.state == "sold"
+
+    # 関連商品表示機能
+    @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
+      @product.taxon_ids).where.not("id": @product.id).distinct.
+      shuffle.take(RELATING_PRODUCTS_LIMIT)
+
+    # ダイレクトメッセージ機能
+    @user = @product.user
+    if current_user
+      @current_user_memberships = Membership.where(user_id: current_user.id)
+      @current_user_memberships.each do |current_user_membership|
+        if current_user_membership.room.product_id == @product.id
+          @has_room = true
+          @room_id = current_user_membership.room_id
+        else
+          @room = Room.new
+          @membership = Membership.new
+        end
+      end
+    end
+
+    # 新規商品表示機能
+    @new_release_products = Product.order(created_at: "desc").distinct.limit(4)
   end
 
   def new
@@ -42,7 +65,7 @@ class ProductsController < ApplicationController
   def location
     @product = Product.find(params[:id])
 
-    #Google Maps表示機能
+    # Google Maps表示機能
     @map = @product.map
     @current_user_latitude = params[:latitude]
     @current_user_longitude = params[:longitude]
@@ -50,12 +73,12 @@ class ProductsController < ApplicationController
     @product_longitude = @product.map.longitude
     @distance = Geocoder::Calculations.distance_between([@current_user_latitude, @current_user_longitude], [@product_latitude, @product_longitude])
 
-    #関連商品表示機能
+    # 関連商品表示機能
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
       @product.taxon_ids).where.not("id": @product.id).distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
 
-    #ダイレクトメッセージ機能
+    # ダイレクトメッセージ機能
     @user = @product.user
     if current_user
       @current_user_memberships = Membership.where(user_id: current_user.id)
@@ -70,7 +93,7 @@ class ProductsController < ApplicationController
       end
     end
 
-    #新規商品表示機能
+    # 新規商品表示機能
     @new_release_products = Product.order(created_at: "desc").distinct.limit(4)
   end
 
@@ -89,6 +112,6 @@ class ProductsController < ApplicationController
 
   def products_params
     params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids,
-      map_attributes: [:id, :address])
+                                    map_attributes: [:id, :address])
   end
 end
