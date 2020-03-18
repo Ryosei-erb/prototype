@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :require_login, only: [:index, :show, :search, :location, :sold, :resale]
+  RELATING_PRODUCTS_LIMIT = 4
   def index
     @products = Product.all
   end
@@ -11,6 +12,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.taxons.build
     @product.build_map
   end
 
@@ -31,11 +33,16 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @searched_products = Product.where("products.name like ?", "%#{params[:search]}%")
+    @searched_products = Product.joins(:taxons).
+      where("taxons.name like ?", "%#{params[:search]}%").
+      or(Product.joins(:taxons).
+      where("products.name like ?", "%#{params[:search]}%"))
   end
 
   def location
     @product = Product.find(params[:id])
+
+    #Google Maps表示機能
     @map = @product.map
     @current_user_latitude = params[:latitude]
     @current_user_longitude = params[:longitude]
@@ -43,6 +50,12 @@ class ProductsController < ApplicationController
     @product_longitude = @product.map.longitude
     @distance = Geocoder::Calculations.distance_between([@current_user_latitude, @current_user_longitude], [@product_latitude, @product_longitude])
 
+    #関連商品表示機能
+    @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
+      @product.taxon_ids).where.not("id": @product.id).distinct.
+      shuffle.take(RELATING_PRODUCTS_LIMIT)
+
+    #ダイレクトメッセージ機能
     @user = @product.user
     if current_user
       @current_user_memberships = Membership.where(user_id: current_user.id)
@@ -72,7 +85,7 @@ class ProductsController < ApplicationController
   end
 
   def products_params
-    params.require(:product).permit(:name, :description, :pickup_times, :image, :price,
+    params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids,
       map_attributes: [:id, :address])
   end
 end

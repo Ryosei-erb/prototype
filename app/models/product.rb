@@ -8,7 +8,6 @@ class Product < ApplicationRecord
   has_one :map
   accepts_nested_attributes_for :map
 
-
   validates :name, presence: true, length: { minimum: 2 }
   validates :description, presence: true
   validates :pickup_times, presence: true

@@ -1,9 +1,11 @@
 <div class="product-right-side">
   <div class="back-to-the-index">
-    <%= link_to products_path do %>
+    <% if product.taxons.present? %>
+    <%= link_to category_path(product.taxons.first.id) do %>
       <div class="icon-reply"><%= icon "fas", "reply" %></div>
-      <p>一覧ページへ戻る</p>
+      <p>カテゴリー一覧ページへ戻る</p>
     <% end %>
+  <% end %>
   </div>
   <div class="single-nameBox">
     <h2><%= product.name %></h2>
