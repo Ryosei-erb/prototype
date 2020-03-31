@@ -1,8 +1,11 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-light" style="background-color: white;" >
-  <div class="icon-header">
+  <div class="icon-header ">
     <%= link_to root_path, style: "color: #00b7ce;" do %>
       <%= icon "fab", "fort-awesome" %>
     <% end %>
+  </div>
+  <div class="header-emagency-button ">
+    <%= link_to "簡易ログイン", guest_path, style: "color: #00b7ce" %>
   </div>
   <div class="header-search-box">
     <form class="form-inline" action="/products/search" method="get" accept-charset="UTF-8" %>

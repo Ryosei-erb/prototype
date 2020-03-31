@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :guest]
   def new
     @user = User.new
   end
@@ -16,5 +16,11 @@ class SessionsController < ApplicationController
   def destroy
     logout
     redirect_to new_login_path
+  end
+
+  def guest
+    @user = User.find_by(email: "email@email.com")
+    login(@user.email, "password")
+    redirect_to products_path
   end
 end

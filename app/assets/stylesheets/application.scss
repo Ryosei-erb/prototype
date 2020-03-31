@@ -497,6 +497,7 @@ body {
     left: 0;
   }
 }
+
 /* トップページ終わり */
 
 /* チャットルームページ */
@@ -769,7 +770,7 @@ body {
     color: #00b7ce;
   }
   .header-search-box {
-    padding-left: 400px;
+    padding-left: 320px;
     padding-top: 3px;
   }
   .search-button {
@@ -817,4 +818,9 @@ body {
     padding-top: 3px;
     padding-left: 20px;
   }
+}
+.header-emagency-button {
+  padding-top: 3px;
+  padding-left: 53px;
+  font-size: 20px;
 }

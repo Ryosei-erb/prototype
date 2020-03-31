@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
     # 関連商品表示機能
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
-      @product.taxon_ids).where.not("id": @product.id).distinct.
+      @product.taxon_ids).where.not(id: @product.id, state: "sold").distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
 
     # ダイレクトメッセージ機能
@@ -30,7 +30,8 @@ class ProductsController < ApplicationController
     end
 
     # 新規商品表示機能
-    @new_release_products = Product.order(created_at: "desc").distinct.limit(4)
+    @new_release_products = Product.order(created_at: "desc")
+      .where.not(id: @product.id, state: "sold").distinct.limit(4)
   end
 
   def new
@@ -75,7 +76,7 @@ class ProductsController < ApplicationController
 
     # 関連商品表示機能
     @relating_products = Product.eager_load(:taxons).where("product_taxons.taxon_id":
-      @product.taxon_ids).where.not("id": @product.id).distinct.
+      @product.taxon_ids).where.not(id: @product.id, state: "sold").distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
 
     # ダイレクトメッセージ機能
@@ -94,7 +95,8 @@ class ProductsController < ApplicationController
     end
 
     # 新規商品表示機能
-    @new_release_products = Product.order(created_at: "desc").distinct.limit(4)
+    @new_release_products = Product.order(created_at: "desc")
+      .where.not(id: @product.id, state: "sold").distinct.limit(4)
   end
 
   def sold

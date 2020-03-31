@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new", as: "new_login"
   post "/login", to: "sessions#create", as: "create_login"
   delete "/logout", to: "sessions#destroy", as: "logout"
+  get "/guest", to: "sessions#guest"
   resources :homes, only: [:index]
   resources :rooms, only: [:show, :create]
   resources :messages, only: [:create]
