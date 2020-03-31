@@ -10,7 +10,7 @@ var app = new Vue({
   el: "#app",
   data: card,
   methods: {
-    addCard: function(event) {
+    addCard: function() {
       Payjp.createToken(card, (status, response) => {
         if (status == 200) {
           this.number = ""
