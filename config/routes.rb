@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'cards/new'
-  get 'cards/show'
-  get 'maps/index'
   root "homes#index"
   get "/products/search", to: "products#search"
   get "/products/:id/location", to: "products#location"
