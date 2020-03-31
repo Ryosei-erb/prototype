@@ -1,5 +1,15 @@
 <% provide(:title, "#{@user.name}の詳細ページ") %>
 <div class="main-wrapper">
+  <div class="container">
+    <div class="row product-lists pl-5">
+      <div class="back-to-the-index">
+        <%= link_to new_card_path do %>
+          <div class="icon-reply"><%= icon "fas", "reply" %></div>
+          <p>カードを登録する</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <% unless @favorite_products.blank? %>
   <div class="container">
     <div class="row product-lists">

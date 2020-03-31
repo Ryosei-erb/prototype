@@ -133,19 +133,7 @@ body {
   border-radius: 2px;
   background-color: #ffffff;
 }
-@media (min-width: 400px) {
-  .imageBox img {
-    width: 100%;
-  }
-}
-@media (min-width: 800px) {
-  .imageBox {
-    padding: 50px 50px 50px 30px;
-  }
-  .imageBox img {
-    width: auto;
-  }
-}
+
 .single-nameBox {
   padding-top: 10px;
   border-bottom: solid 1px #D3D3D3;
@@ -182,7 +170,6 @@ body {
   display: inline-block;
   padding-left: 10px;
 }
-
 .like-you {
   padding-top: 13px;
 }
@@ -207,7 +194,26 @@ body {
   color: #808080;
   padding-left: 6px;
 }
+.buy-button {
+  background-color: gold;
+  color: #ffffff;
+  font-size: 20px;
+  width: 233px;
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  line-height: 48px;
+  border: 3px solid gold;
+}
+.buy-button:hover {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: gold;
+}
 @media (min-width: 400px) {
+  .imageBox img {
+    width: 100%;
+  }
   .start-chat-button {
     background-color: #00b7ce;
     color: #ffffff;
@@ -245,6 +251,12 @@ body {
   }
 }
 @media (min-width: 800px) {
+  .imageBox {
+    padding: 50px 50px 50px 30px;
+  }
+  .imageBox img {
+    width: auto;
+  }
   .start-chat-button {
     background-color: #00b7ce;
     color: #ffffff;

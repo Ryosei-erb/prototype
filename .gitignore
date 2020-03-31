@@ -33,3 +33,11 @@ app/assets/stylesheets/home.scss
 app/helpers/favorites_helper.rb
 app/helpers/home_helper.rb
 draft.txt
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+app/helpers/cards_helper.rb

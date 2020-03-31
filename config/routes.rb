@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cards/new'
+  get 'cards/show'
   get 'maps/index'
   root "homes#index"
   get "/products/search", to: "products#search"
@@ -22,4 +24,9 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :maps, only: [:index]
   get "/maps/search", to: "maps#search"
+  resources :cards, only: [:show, :new] do
+    collection do
+      post "pay", to: "cards#pay"
+    end
+  end
 end

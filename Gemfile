@@ -53,3 +53,4 @@ gem "geocoder"
 gem "geokit-rails"
 gem "rails-i18n"
 gem "bullet"
+gem 'webpacker', github: 'rails/webpacker'

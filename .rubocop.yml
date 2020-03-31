@@ -13,6 +13,7 @@ Layout/DotPosition:
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
+
 AllCops:
   Exclude:
     - 'db/**/*'
@@ -24,3 +25,7 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
+  TargetRubyVersion: 2.5
+
+Rails:
+  Enabled: true

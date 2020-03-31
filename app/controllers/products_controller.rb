@@ -110,6 +110,14 @@ class ProductsController < ApplicationController
     redirect_to @product
   end
 
+  def checkout
+    @card = Card.where(user_id: current_user.id).first
+    @product = Product.find(params[:id])
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(currency: "jpy", amount: @product.price, customer: @card.customer_id)
+    redirect_to sold_path(@product)
+  end
+
   def products_params
     params.require(:product).permit(:name, :description, :pickup_times, :image, :price, :taxon_ids,
                                     map_attributes: [:id, :address])

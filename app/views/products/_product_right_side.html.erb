@@ -42,4 +42,13 @@
       <% end %>
     </div>
   </div>
+  <% if current_user && current_user.cards.present? %>
+  <div class="row">
+    <div class="shopBox pl-3">
+      <%= form_with(url: checkout_products_path(@product.id), method: :post, local: true) do |f| %>
+        <%= f.submit "購入する", class: "buy-button" %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>

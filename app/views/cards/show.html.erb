@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row product-lists pb-3">
+    <div class="products-tab">支払い方法</div>
+  </div>
+  <div class="row card-brand pb-3">
+    <%= @card_info.brand %>
+  </div>
+  <div class="row card-number pb-3">
+    <%= "**** **** **** #{@card_info.last4}" %>
+  </div>
+  <div class="row expire-date">
+    <%= "#{@card_info.exp_month} / #{@card_info.exp_year.to_s.slice(2..3)}" %>
+  </div>
+</div>
