@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :products
-  has_many :favorites
-  has_many :cards
+  has_many :products, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :cards, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :memberships, dependent: :destroy
 

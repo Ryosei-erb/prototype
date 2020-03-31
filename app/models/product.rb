@@ -2,10 +2,10 @@ class Product < ApplicationRecord
   has_many :product_taxons, dependent: :destroy
   has_many :taxons, through: :product_taxons
   belongs_to :user
-  has_one :room
-  has_many :favorites
+  has_one :room, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   mount_uploader :image, ImageUploader
-  has_one :map
+  has_one :map, dependent: :destroy
   accepts_nested_attributes_for :map
 
   validates :name, presence: true, length: { minimum: 2 }
