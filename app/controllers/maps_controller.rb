@@ -6,6 +6,6 @@ class MapsController < ApplicationController
   def search
     @latitude = params[:latitude]
     @longitude = params[:longitude]
-    @maps = Map.all.within(3, origin: [params[:latitude], params[:longitude]])
+    @maps = Map.includes(:product).where.not("products.state": "sold").within(3, origin: [params[:latitude], params[:longitude]])
   end
 end

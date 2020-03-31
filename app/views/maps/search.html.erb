@@ -2,7 +2,13 @@
 <div class="main-wrapper">
   <div class="container">
     <div class="row">
-      <div id="area-map"></div>
+      <% if @maps.present? %>
+        <div id="area-map"></div>
+      <% else %>
+        <div class="message-apologise">
+          <h3>申し訳ありませんが、半径３kmに出品された商品はないようです。</h3>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
