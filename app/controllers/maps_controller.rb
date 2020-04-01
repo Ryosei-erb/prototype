@@ -7,6 +7,5 @@ class MapsController < ApplicationController
     @latitude = params[:latitude]
     @longitude = params[:longitude]
     @maps = Map.includes(:product).within(3, origin: [params[:latitude], params[:longitude]])
-    binding.pry
   end
 end
