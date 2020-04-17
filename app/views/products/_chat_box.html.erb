@@ -1,6 +1,6 @@
 <div class="chatBox">
   <% if current_user %>
-    <% if @has_room %>
+    <% if @room_id %>
       <div class="already-has-chatting">
         <%= button_to "チャットを再開する", room_path(@room_id), method: :get, class: "restart-chat-button" %>
       </div>

@@ -3,7 +3,7 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    card = Card.where(user_id: current_user.id).first
+    card = current_user.cards.first
     redirect_to card_path(card.id) if card.present?
   end
 

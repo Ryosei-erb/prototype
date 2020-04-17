@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
   skip_before_action :require_login
   def show
     @room = Room.find(params[:id])
-    if Membership.where(user_id: current_user.id, room_id: @room.id).present?
+    if current_user.memberships.exists?(room: @room)
       @messages = @room.messages
       @message = Message.new
     else
