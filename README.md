@@ -44,18 +44,18 @@ Railsを記述する部分を最小限に抑え、Javascript側に値を渡す�
 Rails側のDBの内容を、Javascript側で使用し表示させる経験が積めたと思う。  
 具体的な実装は、  
 現在地の計算についてはproduct/show.html.erbのscriptタグ内部、  
-https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/show.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/show.html.erb#L37  
 Productsコントローラーlocationアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L64  
 product/location.html.erbのscriptタグ内部  
-https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/location.html.erb   
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/location.html.erb#L47  
 
 現在地周辺の食品検索は、maps/index.html.erb  
-https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/index.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/index.html.erb#L2  
 Mapsコントローラーsearchアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/maps_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/maps_controller.rb#L6  
 maps/search.html.erb  
-https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/search.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/search.html.erb#L15  
 をご覧頂きたい。  
 
 ・出品者とログインユーザーとのダイレクトメッセージ機能  
@@ -94,11 +94,11 @@ SOLD OUT機能ならば、売り切れた状態にするだけなので、再び
 着想を得たのは、スクールの課題でECサイトを構築していた際、Solidusでは、まだ注文が完了していない場合の商品の状態(cart)、すでに注文が終わっている商品の状態(complete)をstateというカラムを使い表現していたことだった。  
 つまり、Viewのレベルでページを切り替えるのではなく、モデルのレベルでDBを使い状態(state)を切り替えるという方法である。  
 具体的な実装は、Productsコントローラーのsoldアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L102  
 showアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L8  
 resaleアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L108  
 app/views/products/sold.html.erb  
 https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/sold.html.erb  
 をご覧頂きたい。  
@@ -116,17 +116,17 @@ Vue.jsを使用することで、「双方向データバインディング」�
 その際、Vue.jsを使用すれば、データバインディングが出来るので、データを削除することが容易だった。  
 
 カード登録については、登録画面はapp/views/cards/_card_form.html.erb  
-https://github.com/Ryosei-erb/prototype/blob/master/app/views/cards/_card_form.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/cards/_card_form.html.erb#L1  
 PAYJPへの入力内容の送信とトークン化はapp/javascripts/packs/hello_vue.js  
 https://github.com/Ryosei-erb/prototype/blob/master/app/javascript/packs/hello_vue.js  
 PAYJPから受け取ったデータからDBにカードの登録を行う部分は、Cardsコントローラーpayアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/cards_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/cards_controller.rb#L10  
 をご覧頂きたい。  
 
 決済機能については、決済のボタン（フォーム）は、app/views/products/_products_right_side.html.erb  
-https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/_product_right_side.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/_product_right_side.html.erb#L45  
 登録してあるカード情報から支払いをする部分はProductsコントローラーのcheckoutアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L115  
 をご覧頂きたい。  
 
 注） 簡易ログインをクリックすると、すでにカードが登録済みのユーザーが使用できます。  
