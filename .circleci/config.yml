@@ -6,6 +6,11 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.1-stretch-node
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: "root"
+          DB_PASSWORD: ""
     executor: ruby/default
     steps:
       - checkout
@@ -23,5 +28,5 @@ jobs:
       - run:
           name: RSpec
           command: |
-            mysql.server start
+
             bin/rspec
