@@ -94,11 +94,11 @@ SOLD OUT機能ならば、売り切れた状態にするだけなので、再び
 着想を得たのは、スクールの課題でECサイトを構築していた際、Solidusでは、まだ注文が完了していない場合の商品の状態(cart)、すでに注文が終わっている商品の状態(complete)をstateというカラムを使い表現していたことだった。  
 つまり、Viewのレベルでページを切り替えるのではなく、モデルのレベルでDBを使い状態(state)を切り替えるという方法である。  
 具体的な実装は、Productsコントローラーのsoldアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L102  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L98  
 showアクション  
 https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L8  
 resaleアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L108  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L104  
 app/views/products/sold.html.erb  
 https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/sold.html.erb  
 をご覧頂きたい。  
@@ -126,7 +126,7 @@ https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/cards_contro
 決済機能については、決済のボタン（フォーム）は、app/views/products/_products_right_side.html.erb  
 https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/_product_right_side.html.erb#L45  
 登録してあるカード情報から支払いをする部分はProductsコントローラーのcheckoutアクション  
-https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L115  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb#L111  
 をご覧頂きたい。  
 
 注） 簡易ログインをクリックすると、すでにカードが登録済みのユーザーが使用できます。  
