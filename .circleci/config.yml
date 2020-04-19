@@ -22,4 +22,6 @@ jobs:
           command: bundle exec rubocop --require rubocop-airbnb
       - run:
           name: RSpec
-          command: bin/rspec
+          command: |
+            mysql.server start
+            bin/rspec
