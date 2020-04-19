@@ -42,12 +42,21 @@ gemとしてGeocoder及びgetkitを使用。大変だった点は、RailsとJava
 Google MapsはJavascriptで記述する必要があったが、Javascriptのみで記述し、指定した場所を表示させることは、あまり難しくなかった。しかし、ユーザーに入力してもらった住所をDBに保存し、その内容をallメソッドで全て取得し、each文を使い一つずつ取り出す際、each文の範囲によってはscriptタグ内部でうまく動作せずマップが表示されなかった。  
 Railsを記述する部分を最小限に抑え、Javascript側に値を渡すことでうまく表示された。  
 Rails側のDBの内容を、Javascript側で使用し表示させる経験が積めたと思う。  
-具体的な実装は、現在地の計算についてはproduct/show.html.erbのscriptタグ内部(https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/show.html.erb)、  
-Productsコントローラーlocationアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb)、  
-product/location.html.erbのscriptタグ内部(https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/location.html.erb)を、  
-現在地周辺の食品検索は、maps/index.html.erb(https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/index.html.erb)、  
-Mapsコントローラーsearchアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/maps_controller.rb)、  
-maps/search.html.erb(https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/search.html.erb)をご覧頂きたい。  
+具体的な実装は、  
+現在地の計算についてはproduct/show.html.erbのscriptタグ内部、  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/show.html.erb  
+Productsコントローラーlocationアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+product/location.html.erbのscriptタグ内部  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/location.html.erb   
+
+現在地周辺の食品検索は、maps/index.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/index.html.erb  
+Mapsコントローラーsearchアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/maps_controller.rb  
+maps/search.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/maps/search.html.erb  
+をご覧頂きたい。  
 
 ・出品者とログインユーザーとのダイレクトメッセージ機能  
 ユーザーから見た機能について  
@@ -84,9 +93,15 @@ SOLD OUT機能ならば、売り切れた状態にするだけなので、再び
 しかし、ただページを切り替えるだけでは、他のページからリダイレクトした際には元の出品された状態のページが表示されてしまうので、何か工夫が必要だった。  
 着想を得たのは、スクールの課題でECサイトを構築していた際、Solidusでは、まだ注文が完了していない場合の商品の状態(cart)、すでに注文が終わっている商品の状態(complete)をstateというカラムを使い表現していたことだった。  
 つまり、Viewのレベルでページを切り替えるのではなく、モデルのレベルでDBを使い状態(state)を切り替えるという方法である。  
-具体的な実装は、Productsコントローラーのsoldアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb)や  
-showアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb)、  
-resaleアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb)、   app/views/products/sold.html.erb(https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/sold.html.erb)をご覧頂きたい。  
+具体的な実装は、Productsコントローラーのsoldアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+showアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+resaleアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+app/views/products/sold.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/sold.html.erb  
+をご覧頂きたい。  
 
 ・PAYJP APIを使用したカード登録、決済機能  
 ユーザーから見た機能について  
@@ -99,11 +114,20 @@ PAYJPという外部Web APIを使用した。
 Vue.jsを使用することで、「双方向データバインディング」が可能となったことは実装に役立った。  
 なぜなら、ユーザーが入力したカード情報（例えば、カード番号など）はセキュリティの観点から、こちらでは保存せずに、PAYJPに送信し、トークンが送られてきたら、すぐに削除するようにPAYJPのドキュメントには書いてある。  
 その際、Vue.jsを使用すれば、データバインディングが出来るので、データを削除することが容易だった。  
-カード登録については、登録画面はapp/views/cards/_card_form.html.erb(https://github.com/Ryosei-erb/prototype/blob/master/app/views/cards/_card_form.html.erb)を、  
-PAYJPへの入力内容の送信とトークン化はapp/javascripts/packs/hello_vue.js(https://github.com/Ryosei-erb/prototype/blob/master/app/javascript/packs/hello_vue.js)を、  
-PAYJPから受け取ったデータからDBにカードの登録を行う部分は、Cardsコントローラーpayアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/cards_controller.rb)をご覧頂きたい。  
-決済機能については、決済のボタン（フォーム）は、app/views/products/_products_right_side.html.erb(https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/_product_right_side.html.erb)を、  
-登録してあるカード情報から支払いをする部分はProductsコントローラーのcheckoutアクション(https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb)をご覧頂きたい。  
+
+カード登録については、登録画面はapp/views/cards/_card_form.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/cards/_card_form.html.erb  
+PAYJPへの入力内容の送信とトークン化はapp/javascripts/packs/hello_vue.js  
+https://github.com/Ryosei-erb/prototype/blob/master/app/javascript/packs/hello_vue.js  
+PAYJPから受け取ったデータからDBにカードの登録を行う部分は、Cardsコントローラーpayアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/cards_controller.rb  
+をご覧頂きたい。  
+
+決済機能については、決済のボタン（フォーム）は、app/views/products/_products_right_side.html.erb  
+https://github.com/Ryosei-erb/prototype/blob/master/app/views/products/_product_right_side.html.erb  
+登録してあるカード情報から支払いをする部分はProductsコントローラーのcheckoutアクション  
+https://github.com/Ryosei-erb/prototype/blob/master/app/controllers/products_controller.rb  
+をご覧頂きたい。  
 
 注） 簡易ログインをクリックすると、すでにカードが登録済みのユーザーが使用できます。  
 新たにカードの登録を実行したい場合は、ログアウト状態から、新規にユーザーを作成し、ヘッダーのユーザー管理をクリックすると、ユーザー詳細ページが表示されるので、そのページで「カードを登録する」というリンクからカード登録フォームへリダイレクト出来ます。  
