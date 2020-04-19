@@ -16,7 +16,7 @@ RSpec.feature "Products", type: :feature do
       visit product_path(product)
     end
 
-    it "商品一覧画面が表示される" do
+    it "商品詳細画面が表示される" do
       expect(current_path).to eq product_path(product)
       expect(page).to have_content "検索"
       expect(page).to have_link, href: category_path(product.taxons.first.id)

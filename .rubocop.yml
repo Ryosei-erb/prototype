@@ -1,6 +1,9 @@
 inherit_from:
   - .rubocop_airbnb.yml
 
+Rails:
+  Enabled: true
+
 Airbnb/OptArgParameters:
   Enabled: false
 
@@ -15,6 +18,7 @@ Layout/MultilineMethodCallIndentation:
 
 
 AllCops:
+  TargetRubyVersion: 2.5.1
   Exclude:
     - 'db/**/*'
     - 'bin/*'
@@ -25,7 +29,3 @@ AllCops:
     - 'lib/tasks/*'
     - 'vendor/**/*'
     - 'path/ruby'
-  TargetRubyVersion: 2.5
-
-Rails:
-  Enabled: true

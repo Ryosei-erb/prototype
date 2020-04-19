@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.id != nil
+    if !@user.id.nil?
       login(params[:user][:email], params[:user][:password])
       redirect_to products_path
     else

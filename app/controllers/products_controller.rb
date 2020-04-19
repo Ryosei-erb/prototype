@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
     # 関連商品表示機能
     @relating_products = Product.joins(:taxons).where("product_taxons.taxon_id":
-      @product.taxon_ids).where.not(id: @product.id, state: "sold").distinct.
+      @product.taxon_ids).where.not(id: @product.id).distinct.
       shuffle.take(RELATING_PRODUCTS_LIMIT)
 
     # ダイレクトメッセージ機能
