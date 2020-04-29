@@ -711,7 +711,7 @@ body {
   }
   .icon-header {
     font-size: 31px;
-    padding-left: 6px;
+    padding-left: 16px;
     color: #00b7ce;
   }
   .header-search-box {
@@ -719,7 +719,7 @@ body {
   }
   .search-input {
     width: 100px;
-    line-height: 29px;
+    line-height: 20px;
     // padding-right: 7px;
   }
   .search-button {
@@ -730,7 +730,7 @@ body {
     line-height: 29px;
     border-radius: 5px;
     border: 3px solid #00b7ce;
-    margin-left: 6px;
+    margin-left: 2px;
   }
   .user-detail-link a {
     padding-top: 3px;
@@ -819,8 +819,8 @@ body {
     padding-left: 20px;
   }
 }
-.header-emagency-button {
-  padding-top: 3px;
-  padding-left: 53px;
-  font-size: 20px;
+.header-emegency-button {
+  padding-top: 6px;
+  padding-left: 400px;
+  font-size: 19px;
 }

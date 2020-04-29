@@ -4,23 +4,23 @@
       <%= icon "fab", "fort-awesome" %>
     <% end %>
   </div>
-  <div class="header-emagency-button ">
-    <%= link_to "簡易ログイン", guest_path, style: "color: #00b7ce" %>
-  </div>
-  <div class="header-search-box">
-    <form class="form-inline" action="/products/search" method="get" accept-charset="UTF-8" %>
-      <input type="text" name="search" class="form-control mr-sm-2 search-input" placeholder="Search..">
-      <button class="search-button">
-        <span onclick="this.form.submit()">検索</span>
-      </button>
-    </form>
-  </div>
-  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav01" aria-controls="navbarNav01" aria-expanded="false" aria-label="ナビゲーション切り替え">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
   <div class="collapse navbar-collapse" id="navbarNav01">
     <ul class="navbar-nav">
       <% if current_user %>
+      <li class="nav-item">
+        <div class="header-search-box">
+          <form class="form-inline" action="/products/search" method="get" accept-charset="UTF-8" %>
+            <input type="text" name="search" class="form-control mr-sm-2 search-input" placeholder="Search..">
+            <button class="search-button">
+              <span onclick="this.form.submit()">検索</span>
+            </button>
+          </form>
+        </div>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav01" aria-controls="navbarNav01" aria-expanded="false" aria-label="ナビゲーション切り替え">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </li>
       <li class="nav-item">
         <div class="push-product-link">
           <%= link_to "出品する", new_product_path, method: :get, style: "color: #666666", class: "nav-link" %>
@@ -40,6 +40,11 @@
       </li>
       <% else %>
       <li class="nav-item active">
+        <div class="header-emegency-button ">
+          <%= link_to "簡易ログイン", guest_path, style: "color: #00b7ce" %>
+        </div>
+      </li>
+      <li class="nav-item">
         <div class="else-map-link">
           <%= link_to "周辺のマップへ", maps_path, method: :get, style: "color: #666666;", class: "nav-link" %>
         </div>
